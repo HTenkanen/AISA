@@ -4,8 +4,9 @@ formats: []
 python:
     version: 3
     install:
-        - requirements: requirements.txt
+        - requirements: docs/requirements.txt
         - method: pip
+        - path: docs
 
 sphinx:
   configuration: docs/conf.py
