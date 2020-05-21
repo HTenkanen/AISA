@@ -16,6 +16,8 @@ Resources
 
  - literature
  - video
+ - `What is spatial data science (CARTO) <https://www.youtube.com/watch?v=osAbJeTho5w>`__
+ - Luc Anselin - `Spatial Data Science overview <https://www.youtube.com/watch?v=lawWM6jQYEE>`__
 
 Analytical workflow
 -------------------
