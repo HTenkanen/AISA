@@ -11,6 +11,12 @@ After this week's tutorial, you should be able to describe:
  - Why it is important to document your workflow continuously when doing analyses?
  - What tools are available to make reproducible science and how to use them?
 
+Resources
+---------
+
+ - literature
+ - video
+
 Analytical workflow
 -------------------
 
