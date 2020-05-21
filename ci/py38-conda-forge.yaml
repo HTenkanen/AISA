@@ -15,6 +15,7 @@ dependencies:
   - matplotlib
   - SQLalchemy
   - psycopg2
+  - sphinxcontrib-bibtex
   - pip
   - pip:
       - git+https://github.com/pandas-dev/pandas-sphinx-theme.git@master
