@@ -1,1 +1,6 @@
+sphinx==2.3.1
+ipython
+jupyter-sphinx
+nbsphinx
+git+https://github.com/pandas-dev/pydata-sphinx-theme.git@master
 geopandas==0.7.0
