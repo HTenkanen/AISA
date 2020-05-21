@@ -4,6 +4,10 @@ matrix:
   include:
     - env: ENV_FILE="ci/py38-conda-forge.yaml"
 
+env:
+  global:
+    - secure: vH3MCh2bBTK9y0rUshtBxoG1160c+Zz9HPu5S0dELob2jgmIBy82IJIMPkgEb/svytz7PdHpnnoX9bdSC5shAYRy6fDoE+NU3TmrbTzGZdA52Vz3kVgvTtdRQOutW6TLgq8jvBp9M8YBF90Ipl9KyjKbR4+PvSYQgfFN6LuQmmbcHyxq9CyUGAaF42y43v1x15YRSqV/biAOBnV7inuA8zdurEOnzhPRXNXY70TkIOb/DUWez1WmM6hri+zDSaLcz8MURya7DiREm+LUxue0AEUtS3wzzzPk4aVkd6IqzGihrXB304bRjXvFave8cywYjqTRDooQ6dVylg2ertVIOzFn4I8s/aRhy3gVG7GfJbyQns4SfDY3rBLEFKLJV8DX92Mhe+gEteIT8hd2NC2stw2rwZJflgB4UapD2Va1LV9DxOVun39Ko1i98NvYRhwuZqDvc8fqRN6tReHDOhGhtXZeAn1eN+nyRpPSQIOL9IcivXo22GjPdktAjdpjHswnKgMrW0VbBRviS0gVAltkBZIV7WDH06UAHQOOuscZlGJWJCbvNm5wk7SmDFF1kGgrgZ83t2gG/ldgwzxKNW4N0zqAcHGzP948RYfc5W+1v3GeYhfrzPslioC5luhRMvJ+XcR/N5PSOXVqrPStgB1fUbDZOeZ/4GF9g6RuUeF/KmI=
+
 install:
   # Install conda
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
