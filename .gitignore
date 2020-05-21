@@ -1,5 +1,0 @@
-# Ignore PyCharm logs
-.idea
-build
-.ipynb_checkpoints
-docs/notebooks/*.rst
