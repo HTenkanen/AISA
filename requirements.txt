@@ -1,5 +1,1 @@
-pandas
-geopandas
-networkx
-osmnx
-matplotlib
+geopandas==0.7.0
