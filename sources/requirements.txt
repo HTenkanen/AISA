@@ -3,5 +3,6 @@ wheel
 ipython
 jupyter-sphinx
 nbsphinx
+sphinxcontrib-bibtex
 git+https://github.com/pandas-dev/pydata-sphinx-theme.git@master
 geopandas==0.7.0
