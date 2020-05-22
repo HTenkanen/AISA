@@ -14,6 +14,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    # Build pages
+    - uses: ammaraskar/sphinx-action@master
+        with:
+          build-command: "make pages"
+          docs-folder: "build"
+
     # Publish built docs to gh-pages branch.
     # ===============================
     - name: Commit documentation changes
