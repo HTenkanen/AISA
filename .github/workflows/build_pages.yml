@@ -24,6 +24,10 @@ jobs:
       run: |
         python -m pip install -r docs/requirements.txt
 
+    - name: Build pages
+      run: |
+        make pages
+
     # Standard drop-in approach that should work for most people.
     - uses: ammaraskar/sphinx-action@master
       with:
