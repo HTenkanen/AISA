@@ -17,8 +17,8 @@ jobs:
     # Build pages
     - uses: ammaraskar/sphinx-action@master
         with:
-          build-command: "make pages"
-          docs-folder: "build"
+          build-command: "make html"
+          docs-folder: "docs2"
 
     # Publish built docs to gh-pages branch.
     # ===============================
