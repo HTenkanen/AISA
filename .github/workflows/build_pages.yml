@@ -45,7 +45,7 @@ jobs:
         name: DocumentationHTML
         path: docs2/_build/html/
 
-    # Publish built docs to gh-pages branch.
+    # Publish built sources to gh-pages branch.
     # ===============================
     - name: Commit documentation changes
       run: |
