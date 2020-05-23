@@ -95,19 +95,17 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Course Information
-   :titlesonly:
    :hidden:
 
    course_information
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Building blocks
-   :titlesonly:
-   :hidden:
-
    analysis_workflow
+   notebooks/data_aquisition
+   notebooks/point_pattern_analysis
+   notebooks/clustering
+   notebooks/spatial_autocorrelation
+   notebooks/spatial_interpolation
+   notebooks/spatial_network_analysis
+   notebooks/spatial_regression
 
 
 .. raw:: html

@@ -20,9 +20,18 @@ def convert_notebooks_to_rst(notebook_list):
 
 def add_hypothesis_block(writer):
 
-    codes = ['.. raw:: html\n\n',
+    codes = ['\n\n.. raw:: html\n',
              '    <script src="https://hypothes.is/embed.js" async> </script>',
              '\n'
+             ]
+    for line in codes:
+        writer.write(line)
+
+
+def add_binder_block(writer):
+    codes = ["\n.. image:: https://mybinder.org/badge_logo.svg\n",
+             "    :target: https://mybinder.org/v2/gh/HTenkanen/AISA/master?urlpath=lab/tree/sources/notebooks/spatial_network_analysis.ipynb",
+             "\n\n"
              ]
     for line in codes:
         writer.write(line)
@@ -48,8 +57,16 @@ def convert_notebooks_to_jupyter_sphinx_rst(notebook_list):
 
         # Write
         with open(nb.replace('.ipynb', '.rst'), 'w') as rst:
-            for line in converted_lines:
+
+            for i, line in enumerate(converted_lines):
                 rst.write(line)
+
+                # Add binder button after the title
+                if i == 1:
+                    if "spatial_network" in nb:
+                        # Add binder button on top
+                        add_binder_block(rst)
+
 
             # Insert Hypothesis tag
             add_hypothesis_block(rst)

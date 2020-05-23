@@ -31,6 +31,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'jupyter_sphinx.execute',
     'sphinxcontrib.bibtex',
+    'sphinx_togglebutton',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -66,12 +67,12 @@ nbsphinx_allow_errors = True
 
 
 # -- Options for Jupyter-Sphinx --
-jupyter_sphinx_thebelab_config = {
-    'requestKernel': True,
-    'binderOptions': {
-        'repo': "binder-examples/requirements",
-    },
-}
+# jupyter_sphinx_thebelab_config = {
+#     'requestKernel': True,
+#     'binderOptions': {
+#         'repo': "binder-examples/requirements",
+#     },
+# }
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -85,3 +86,4 @@ html_css_files = [
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 html_logo = "_static/Intro-spatial-analytics.png"
+

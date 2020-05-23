@@ -5,5 +5,8 @@ nbsphinx
 sphinxcontrib-bibtex
 git+https://github.com/pandas-dev/pydata-sphinx-theme.git@master
 geopandas==0.7.0
-
+osmnx
+networkx
+jupytext
+sphinx_togglebutton
 #sphinx==2.3.1
