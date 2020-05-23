@@ -27,11 +27,9 @@ spatial networks and conduct useful queries such as finding the shortest path al
 
         After this tutorial, you should be able to:
 
-         - Understand which are typical application areas where spatial network analysis is used?
-         - Know the basic elements of a graph
-         - Understand the difference between directed and undirected graph
-         - Be able to solve a simple shortest path calculation (on paper without any tools)
-         - Be able to use Python tools (NetworkX + OSMnx) to make a simple way-finding application
+         - Understand typical application areas for spatial network analysis
+         - Know the basic concepts and elements of a graph (network)
+         - Be able to solve simple spatial network analysis problems using Python programming language
 
 .. admonition:: Additional materials
    :name: hint
@@ -48,12 +46,6 @@ spatial networks and conduct useful queries such as finding the shortest path al
 
             <iframe width="560" height="315" src="https://www.youtube.com/embed/ZHr0Ch6KRSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
-Tutorial
---------
-
-Finding a shortest path using a specific street network is a common spatial analytics
-problem that has many practical every-day applications.
 
 Before we dive deeper to spatial networks, **let's spend a moment with the following task**:
 
@@ -98,6 +90,11 @@ Before we dive deeper to spatial networks, **let's spend a moment with the follo
                  *Source Ela Dramowicz* (`2015 <https://www.directionsmag.com/article/3207>`__)
 
 
+Tutorial
+--------
+
+Finding a shortest path using a specific street network is a common spatial analytics
+problem that has many practical every-day applications.
 
 **How to do network analysis in practice? What tools to use?** Luckily, Python provides easy to use tools for conducting spatial network analysis.
 One of the easiest ways to start is to use a library
@@ -194,8 +191,8 @@ edge_id from_node to_node description
 
 Next, we will continue, and see how to conduct shortest path analysis by walking/cycling using Python.
 
-Typical workflow for routing
-----------------------------
+Typical workflow for spatial network analysis
+---------------------------------------------
 
 If you want to conduct network analysis (in any programming language)
 there are a few basic steps that needs to be done before you can start
@@ -217,7 +214,7 @@ Network analysis by walking / cycling
 -------------------------------------
 
 1. Retrieve data
-~~~~~~~~~~~~~~~~
+----------------
 
 As a first step, we need to obtain data for routing.
 `OSMnx <https://github.com/gboeing/osmnx>`__ library makes it really
@@ -395,7 +392,7 @@ calculating one-to-many -type of routing queries (producing e.g. travel
 time matrices).
 
 Find the optimal route between two locations
---------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Next, we will learn how to find the shortest path between two locations
 using
@@ -479,6 +476,9 @@ available: ``'length'``, ``'walk_t'`` and ``'bike_t'``.
 Okay, that was it! Let’s now see what we got as results by visualizing
 the results.
 
+5. Visualize the results
+------------------------
+
 For visualization purposes, we can use a handy function again from OSMnx
 called ``ox.plot_graph_route()`` (for static) or
 ``ox.plot_route_folium()`` (for interactive plot).
@@ -535,18 +535,28 @@ typically want to look at travel times between multiple locations
 .. jupyter-execute::
     :raises:
 
-
     # Calculate walk travel times originating from one location
     walk_times = nx.single_source_dijkstra_path_length(G, source=orig_node_id, weight='walk_t')
 
+.. code:: ipython3
+
     # What did we get?
-    #walk_times
-
-.. jupyter-execute::
-    :raises:
-
-
     walk_times
+
+    {298372995: 0,
+     310042886: 4.3,
+     298372997: 4.8,
+     1377211668: 9.1,
+     298372992: 10.1,
+     298372994: 10.5,
+     298372999: 14.6,
+     298373001: 15.0,
+     298275980: 20.4,
+     1008235033: 58.6,
+     298275990: 61.6,
+     298275993: 63.1,
+    ...
+    }
 
 As we can see, the result is a dictionary where we have the **node_id**
 as keys and the **travel time** as values.
