@@ -1,0 +1,21 @@
+name: python-gis
+
+channels:
+  - conda-forge
+
+dependencies:
+  - pandas
+  - geopandas
+  - rtree
+  - matplotlib
+  - folium
+  - SQLalchemy
+  - psycopg2
+  - networkx
+  - geopy
+  - osmnx
+  - pip
+  - pip:
+      pyrosm
+
+
