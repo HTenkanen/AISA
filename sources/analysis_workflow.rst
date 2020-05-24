@@ -1,5 +1,5 @@
-Introduction to Spatial Analytics
-=================================
+1. Introduction to Spatial Analytics
+====================================
 
 Learning goals
 --------------

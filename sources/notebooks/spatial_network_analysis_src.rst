@@ -1,10 +1,14 @@
-Spatial Network analysis
-========================
+6. Spatial Network analysis
+===========================
 
 .. image:: https://img.shields.io/badge/Interact-Run%20the%20codes%20in%20browser-orange.svg
     :target: https://mybinder.org/v2/gh/HTenkanen/AISA/master?urlpath=lab/tree/sources/notebooks/spatial_network_analysis.ipynb
 
 |
+
+Introduction
+------------
+
 **Networks are everywhere**. Social networks, telecommunication networks, neural networks (in our brains), and transportation networks
 are all very familiar examples how the networks surround us and are very essential to our everyday life. No surprise then,
 that studying complex networks has grown to be a very important topic in various fields of science including biology, medical sciences,
@@ -46,6 +50,15 @@ spatial networks and conduct useful queries such as finding the shortest path al
 
             <iframe width="560" height="315" src="https://www.youtube.com/embed/ZHr0Ch6KRSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+.. admonition:: Exercise 6
+   :name: hint
+
+   .. container:: toggle
+
+        In Exercise 6, you will practice how to work with OpenStreetMap data and conduct network analysis in Python.
+        The practical programming sessions will be organized again on Thursday where you can get help from the course assistants.
+
+        You can start working on your copy of Exercise 6 by `accepting the GitHub Classroom assignment <https://classroom.github.com/a/8LP9voLx>`__.
 
 Before we dive deeper to spatial networks, **let's spend a moment with the following task**:
 
@@ -147,6 +160,8 @@ geographical information to edges (if you e.g. want to show how the
 roads are curved between intersections), but for basic travel time
 analyses this is not needed.
 
+ADD IMAGE OF GRAPH WITH COSTS.
+
 Directed vs Undirected graphs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -160,6 +175,8 @@ between nodes (e.g. from ``A --> B`` and from ``B --> A``). Undirected
 graphs are typically used e.g. with walking and cycling as with those
 travel modes it is typically possible to travel the same street in any
 direction you like.
+
+ADD IMAGE OF DIRECTED GRAPH.
 
 If the graph is **directed**, it means that you should have a separate
 edge for each direction. If you for example have a graph with only an
@@ -176,18 +193,21 @@ edge_id from_node to_node description
 2       E         D       *edge for direction 2*
 ======= ========= ======= ======================
 
-.. admonition:: Discuss/solve together with your neighbor (max. 10 minutes)
+.. admonition:: TASK 2 - Vote!
    :name: note
 
-   **TASK 2:** What is the shortest path from node **A** to **F** using the following graph?:
+   The following routes are examples of paths with costs along the network. Which one is faster? Choose A or B.
+   (press **+** to open the questionnaire)
 
-    ADD IMAGE HERE.
 
     .. container:: toggle
 
-        .. admonition:: Correct answer
+        .. admonition:: Questions (open in full screen if difficult to see)
 
-            ADD CORRECT ANSWER HERE.
+            .. raw:: html
+
+               <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQa8mUSXktDN0-PN22ohMps6oTxfLHLjly6ewhvcAAJm37dO9NNW8BHVy4oMe8sKIorNWOZJLM5dVf7/embed?start=false&loop=false&delayms=3000" frameborder="0" width="550" height="350" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 
 Next, we will continue, and see how to conduct shortest path analysis by walking/cycling using Python.
 
@@ -237,16 +257,16 @@ conduct routing along OpenStreetMap data.
     import geopandas as gpd
     import networkx as nx
     from shapely.geometry import Point
-    
-    # The place where you want to retrieve the data 
+
+    # The place where you want to retrieve the data
     # OSMnx uses Nominatim/OverPass API to retrieve the data
     # You can check that your place name is valid from: https://nominatim.openstreetmap.org/
     place = "Kamppi, Helsinki, Finland"
-    
-    # Retrieve pedestrian data 
+
+    # Retrieve pedestrian data
     kamppi = ox.gdf_from_place(place)
     G = ox.graph_from_place(place, network_type='walk')
-    
+
     # What did we retrieve?
     G
 
@@ -281,7 +301,7 @@ useful to fetch the data into GeoDataFrames:
     :raises:
 
 
-    nodes, edges = ox.graph_to_gdfs(G, nodes=True, edges=True)  # you can flag whether you want to e.g. exclude nodes 
+    nodes, edges = ox.graph_to_gdfs(G, nodes=True, edges=True)  # you can flag whether you want to e.g. exclude nodes
 
 .. jupyter-execute::
     :raises:
@@ -321,11 +341,11 @@ impedance or cost).
     # Calculate the time (in seconds) it takes to walk through road segments
     walk_speed = 4.5  # kmph
     edges['walk_t'] = (( edges['length'] / (walk_speed*1000) ) * 60 * 60).round(1)
-    
+
     # Do the same for cycling
     cycling_speed = 19  # kmph
     edges['bike_t'] = (( edges['length'] / (cycling_speed*1000) ) * 60 * 60).round(1)
-    
+
     # Let's check what we got
     edges[['length', 'walk_t', 'bike_t']].head()
 
@@ -409,15 +429,15 @@ our origin and destination.
 
 
     # OSM data is in WGS84 so typically we need to use lat/lon coordinates when searching for the closest node
-    
+
     # Origin
     orig_address = "Kalevankatu 16, Helsinki"
     orig_y, orig_x = ox.geocode(orig_address)  # notice the coordinate order (y, x)!
-    
+
     # Destination
     dest_address = "Ruoholahdenkatu 24, Helsinki"
-    dest_y, dest_x = ox.geocode(dest_address) 
-    
+    dest_y, dest_x = ox.geocode(dest_address)
+
     print("Origin coords:", orig_x, orig_y)
     print("Destination coords:", dest_x, dest_y)
 
@@ -437,7 +457,7 @@ formula to get the distance in meters (with ``return_dist=True``).
     # 1. Find the closest nodes for origin and destination
     orig_node_id, dist_to_orig = ox.get_nearest_node(G, point=(orig_y, orig_x), method='haversine', return_dist=True)
     dest_node_id, dist_to_dest = ox.get_nearest_node(G, point=(dest_y, dest_x), method='haversine', return_dist=True)
-    
+
     print("Origin node-id:", orig_node_id, "and distance:", dist_to_orig, "meters.")
     print("Destination node-id:", dest_node_id, "and distance:", dist_to_dest, "meters.")
 
@@ -467,7 +487,7 @@ available: ``'length'``, ``'walk_t'`` and ``'bike_t'``.
     # Calculate the paths by walking and cycling
     walk_path = nx.dijkstra_path(G, source=orig_node_id, target=dest_node_id, weight='walk_t')
     bike_path = nx.dijkstra_path(G, source=orig_node_id, target=dest_node_id, weight='bike_t')
-    
+
     # Get also the actual travel times (summarize)
     walk_t = nx.dijkstra_path_length(G, source=orig_node_id, target=dest_node_id, weight='walk_t')
     bike_t = nx.dijkstra_path_length(G, source=orig_node_id, target=dest_node_id, weight='bike_t')
@@ -491,7 +511,7 @@ called ``ox.plot_graph_route()`` (for static) or
 
     # Walking
     fig, ax = ox.plot_graph_route(G, walk_path)
-    
+
     # Add the travel time as title
     ax.set_xlabel("Walk time {t: .1f} minutes.".format(t=walk_t/60))
 
@@ -501,7 +521,7 @@ called ``ox.plot_graph_route()`` (for static) or
 
     # Cycling
     fig, ax = ox.plot_graph_route(G, bike_path)
-    
+
     # Add the travel time as title
     ax.set_xlabel("Cycling time {t: .1f} minutes.".format(t=bike_t/60))
 
@@ -573,7 +593,7 @@ then we can easily merge the information with the nodes GeoDataFrame.
     # Convert to DataFrame and add column names
     walk_times_df = pd.DataFrame([list(walk_times.keys()), list(walk_times.values())]).T
     walk_times_df.columns = ['node_id', 'walk_t']
-    
+
     # What do we have now?
     walk_times_df.head()
 
@@ -601,7 +621,7 @@ from the ``index`` of the gdf as well as from the column ``osmid``.
 
     # Merge the datasets
     nodes = nodes.merge(walk_times_df, left_on='osmid', right_on='node_id')
-    
+
     # Check
     nodes.head()
 
@@ -614,16 +634,16 @@ Okay, now we have also the travel times associated for each node.
 
 
     %matplotlib inline
-    
+
     # Make a GeoDataFrame for the origin point so that we can visualize it
     orig = gpd.GeoDataFrame({'geometry': [Point(orig_x, orig_y)]}, index=[0], crs={'init': 'epsg:4326'})
-    
+
     # Plot the results with edges and the origin point (green)
     ax = edges.plot(lw=0.5, color='gray', zorder=0, figsize=(10,10))
     ax = nodes.plot('walk_t', ax=ax, cmap='RdYlBu', scheme='natural_breaks', k=5, markersize=30, legend=True)
     ax = orig.plot(ax=ax, markersize=100, color='green')
-    
-    # Adjust axis 
+
+    # Adjust axis
     ax.set_xlim([24.92, 24.945])
     ax.set_ylim([60.160, 60.170])
 

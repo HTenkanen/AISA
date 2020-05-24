@@ -89,10 +89,6 @@ Course online tools
     :scale: 40 %
 
 
-Contents
---------
-
-
 .. toctree::
    :maxdepth: 2
    :hidden:
@@ -101,10 +97,9 @@ Contents
    analysis_workflow
    notebooks/data_aquisition
    notebooks/point_pattern_analysis
-   notebooks/clustering
    notebooks/spatial_autocorrelation
    notebooks/spatial_interpolation
-   notebooks/spatial_network_analysis
+   notebooks/spatial_network_analysis_src
    notebooks/spatial_regression
 
 

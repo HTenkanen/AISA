@@ -5,6 +5,10 @@ Spatial Network analysis
     :target: https://mybinder.org/v2/gh/HTenkanen/AISA/master?urlpath=lab/tree/sources/notebooks/spatial_network_analysis.ipynb
 
 |
+
+Introduction
+------------
+
 **Networks are everywhere**. Social networks, telecommunication networks, neural networks (in our brains), and transportation networks
 are all very familiar examples how the networks surround us and are very essential to our everyday life. No surprise then,
 that studying complex networks has grown to be a very important topic in various fields of science including biology, medical sciences,
@@ -46,6 +50,15 @@ spatial networks and conduct useful queries such as finding the shortest path al
 
             <iframe width="560" height="315" src="https://www.youtube.com/embed/ZHr0Ch6KRSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+.. admonition:: Exercise 6
+   :name: hint
+
+   .. container:: toggle
+
+        In Exercise 6, you will practice how to work with OpenStreetMap data and conduct network analysis in Python.
+        The practical programming sessions will be organized again on Thursday where you can get help from the course assistants.
+
+        You can start working on your copy of Exercise 6 by `accepting the GitHub Classroom assignment <https://classroom.github.com/a/8LP9voLx>`__.
 
 Before we dive deeper to spatial networks, **let's spend a moment with the following task**:
 
