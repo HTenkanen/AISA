@@ -4,18 +4,14 @@ channels:
   - conda-forge
 
 dependencies:
-  - pandas
-  - geopandas
-  - rtree
-  - matplotlib
-  - folium
-  - SQLalchemy
-  - psycopg2
-  - networkx
-  - geopy
-  - osmnx
+  - geopandas=0.7.0
+  - matplotlib=3.2.1
+  - folium=0.11.0
+  - networkx=2.4
+  - geopy=1.22.0
+  - osmnx=0.12.1
   - pip
   - pip:
-      pyrosm
+      pyrosm==0.5.2
 
 
