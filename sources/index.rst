@@ -1,9 +1,16 @@
-Introduction to Spatial Analytics
-=================================
+.. image:: _static/aisa_banner.png
+
+|
 
 Welcome to **Introduction to Spatial Analytics** -course that provides the theories, tools, and methods that
-an engineer and modern data scientist needs to meet the challenges of contemporary data science applied to
+an engineer and a modern spatial data scientist needs to meet the challenges of contemporary data science applied to
 geographic problems and data.
+
+
+Learning goals
+--------------
+
+After this course, you should have basic knowledge and skills to apply spatial analysis
 
 Prerequisites
 -------------
