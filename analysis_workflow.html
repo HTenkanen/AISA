@@ -120,6 +120,34 @@
             <a href="#step-1-defining-the-question-objectives" class="nav-link">Step 1 - Defining the question/objectives</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#step-2-data-acquisition" class="nav-link">Step 2 - Data acquisition</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#step-3-data-storage" class="nav-link">Step 3 - Data storage</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#step-4-data-cleaning" class="nav-link">Step 4 - Data cleaning</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#step-5-analysis" class="nav-link">Step 5 - Analysis</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#step-6-visualization" class="nav-link">Step 6 - Visualization</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#step-7-critical-assessment" class="nav-link">Step 7 - Critical Assessment</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#step-8-outcome-meaningful-knowledge" class="nav-link">Step 8 - Outcome: Meaningful knowledge</a>
+        </li>
+    
             </ul>
         </li>
     
@@ -216,7 +244,7 @@ we are discussing with someone who comes outside of our domain (i.e. <em>great m
 geography matters is a rather obvious thing (as Waldo Tobler famously put it around 50 years ago),
 but it is also good to remind us in a bit broader terms, what is it that make this field of ours special.
 The following presentation gives you a brief introduction to the topic:</p>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS2xp3ydyopyxZOrCV336mnYWuIkE3wz2eEbXv5vH_O8ECBw0-pIpMQfpw8aegHHfllcbIbRF0xOe4j/embed?start=false&loop=false&delayms=3000" frameborder="0" width="700" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><div class="line-block">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ5Qy35sbBvs_X3NRztMC-S8sqQSUT8BuixE86CMUHyn9Ag3_cD_jyosfOb1VCDmHVOoSNtCsWGVhRn/embed?start=false&loop=false&delayms=3000" frameborder="0" width="700" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
@@ -227,24 +255,53 @@ spatial data science (as well as to any kind of science, really). Figure 1 repre
 analysis process (see more details from the following sections). During the course, these steps will become extremely familiar to you, as we are going to repeat the same
 processing steps on each week.</p>
 <div class="figure align-left" id="id6">
-<a class="reference internal image-reference" href="_images/analysis_workflow.png"><img alt="_images/analysis_workflow.png" src="_images/analysis_workflow.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="_images/analysis_workflow.png"><img alt="_images/analysis_workflow.png" src="_images/analysis_workflow.png" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-text"><strong>Figure 1.</strong> Typical spatial analysis workflow consist of various steps that start from defining the research question and (ideally)
 end with meaningful information about the topic that was analyzed. (adopted from <a class="bibtex reference internal" href="#toivonen2019" id="id4">[4]</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>Another useful and a bit more generic analytical framework is to think the methodological work as a
-sequence of 5 steps that is called as <strong>PPDAC</strong> <a class="bibtex reference internal" href="#mackay2000" id="id5">[1]</a>:</p>
+sequence of 5 steps that is called as <strong>PPDAC</strong> consisting of Problem, Plan, Data, Analysis, Conclusions <a class="bibtex reference internal" href="#mackay2000" id="id5">[1]</a>:</p>
 <div class="figure align-left" id="id7">
 <a class="reference internal image-reference" href="_images/ppdac.png"><img alt="_images/ppdac.png" src="_images/ppdac.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-text"><strong>Figure 2.</strong>  A summary of a revised PPDAC approach as an iterative process: Although clockwise sequence (1→5) applies as
+<p class="caption"><span class="caption-text"><strong>Figure 2.</strong>  A PPDAC approach as an iterative process: Although clockwise sequence (1→5) applies as
 the principal flow, each stage often feeds back to the previous stage. (Source: <a class="reference external" href="https://www.spatialanalysisonline.com/HTML/index.html?analytical_methodologies.htm">de Smith et al. (2020)</a> )</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="step-1-defining-the-question-objectives">
 <h3>Step 1 - Defining the question/objectives<a class="headerlink" href="#step-1-defining-the-question-objectives" title="Permalink to this headline">¶</a></h3>
 <p>All analytical work (and doing science in general) starts by <strong>defining the research question</strong> and/or <strong>specifying the objectives</strong>
-for the work. Typically this step starts by <strong>getting an idea</strong>. You most probably have gotten that “light bulb” 💡 moment, or been truly wondering
-some aspect of life or technology that you don’t yet understand. With the initial idea, typically follows a rigorous search for information
-and discussing with others. In some cases, it turns out that no-one has yet answered to that question that you were wondering, or no-one has yet
-developed a solution for the problem (e.g. a technical one) that you are facing. If this is the case,</p>
+for the work. Typically this step starts by <strong>getting an idea</strong> or having a <strong>problem</strong> that requires solving. You most probably have
+at least once gotten a “light bulb” 💡 moment, or been truly wondering some aspect of life or technology that you don’t yet understand.
+With the initial idea, typically follows a rigorous search for information and discussing with others about the idea/problem.
+In some cases, it turns out that no-one has yet answered to your question, or developed a technical solution for the problem.
+If this is the case, then you start by <strong>planning</strong> how to proceed with the problem at hand.</p>
+</div>
+<div class="section" id="step-2-data-acquisition">
+<h3>Step 2 - Data acquisition<a class="headerlink" href="#step-2-data-acquisition" title="Permalink to this headline">¶</a></h3>
+<p>Nothing here. Placeholder for demo purposes.</p>
+</div>
+<div class="section" id="step-3-data-storage">
+<h3>Step 3 - Data storage<a class="headerlink" href="#step-3-data-storage" title="Permalink to this headline">¶</a></h3>
+<p>Nothing here. Placeholder for demo purposes.</p>
+</div>
+<div class="section" id="step-4-data-cleaning">
+<h3>Step 4 - Data cleaning<a class="headerlink" href="#step-4-data-cleaning" title="Permalink to this headline">¶</a></h3>
+<p>Nothing here. Placeholder for demo purposes.</p>
+</div>
+<div class="section" id="step-5-analysis">
+<h3>Step 5 - Analysis<a class="headerlink" href="#step-5-analysis" title="Permalink to this headline">¶</a></h3>
+<p>Nothing here. Placeholder for demo purposes.</p>
+</div>
+<div class="section" id="step-6-visualization">
+<h3>Step 6 - Visualization<a class="headerlink" href="#step-6-visualization" title="Permalink to this headline">¶</a></h3>
+<p>Nothing here. Placeholder for demo purposes.</p>
+</div>
+<div class="section" id="step-7-critical-assessment">
+<h3>Step 7 - Critical Assessment<a class="headerlink" href="#step-7-critical-assessment" title="Permalink to this headline">¶</a></h3>
+<p>Nothing here. Placeholder for demo purposes.</p>
+</div>
+<div class="section" id="step-8-outcome-meaningful-knowledge">
+<h3>Step 8 - Outcome: Meaningful knowledge<a class="headerlink" href="#step-8-outcome-meaningful-knowledge" title="Permalink to this headline">¶</a></h3>
+<p>Nothing here. Placeholder for demo purposes.</p>
 </div>
 </div>
 <div class="section" id="definitions-what-is-spatial-analysis-really">
