@@ -3,14 +3,19 @@
 |
 
 Welcome to **Introduction to Spatial Analytics** -course that provides the theories, tools, and methods that
-an engineer and a modern spatial data scientist needs to meet the challenges of contemporary data science applied to
+a modern spatial data scientist and an engineer needs to meet the challenges of contemporary data science applied to
 geographic problems and data.
 
 
 Learning goals
 --------------
 
-After this course, you should have basic knowledge and skills to apply spatial analysis
+After finishing this course, you should:
+
+ - understand the theories and foundations for various spatial methods that are at the core of spatial data science
+ - have the technical skills to apply spatial analytics to real-world problems using Python programming with open source libraries (no proprietary libraries are used)
+ - know how to conduct reproducible science using modern technologies (e.g. using GitHub and Jupyter Notebooks)
+ - know how to do collaborative coding with class mates (using version control + GitHub)
 
 Prerequisites
 -------------
