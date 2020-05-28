@@ -1,0 +1,1387 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6. Spatial Network analysis &#8212; Introduction to Spatial Analytics  documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script >var togglebuttonSelector = '.toggle';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Spatial Regression" href="spatial_regression.html" />
+    <link rel="prev" title="5. Spatial Interpolation" href="spatial_interpolation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/Intro-spatial-analytics.png" class="logo" alt="logo">
+</a>
+
+
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+    <i class="icon fas fa-search"></i>
+    <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+  </form>
+
+  <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+
+
+
+    <ul class="nav bd-sidenav">
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../course_information.html">Course information</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../analysis_workflow.html">1. Introduction to Spatial Analytics</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="data_aquisition.html">2. Spatial data aquisition, cleaning, filtering and classification</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="point_pattern_analysis.html">3. Point pattern analysis and clustering</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="spatial_autocorrelation.html">4. Spatial autocorrelation and LISA</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="spatial_interpolation.html">5. Spatial Interpolation</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="">6. Spatial Network analysis</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="spatial_regression.html">7. Spatial Regression</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="big_data_spatial_analytics.html">8. Applying spatial analytics in the Era of Big Data</a>
+        </li>
+        
+    </ul>
+
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#introduction" class="nav-link">Introduction</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#lesson-objectives" class="nav-link">Lesson objectives</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#tutorial" class="nav-link">Tutorial</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#what-is-a-graph" class="nav-link">What is a graph?</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#node-and-edge-attributes" class="nav-link">Node and Edge attributes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#directed-vs-undirected-graphs" class="nav-link">Directed vs Undirected graphs</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#typical-workflow-for-spatial-network-analysis" class="nav-link">Typical workflow for spatial network analysis</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#network-analysis-by-walking-cycling" class="nav-link">Network analysis by walking / cycling</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#retrieve-data" class="nav-link">1. Retrieve data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#modify-the-graph" class="nav-link">2. Modify the graph</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#build-graph" class="nav-link">3. Build graph</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#routing-with-networkx" class="nav-link">4. Routing with NetworkX</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#basic-logic-in-routing" class="nav-link">Basic logic in routing</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#find-the-optimal-route-between-two-locations" class="nav-link">Find the optimal route between two locations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#find-the-nearest-nodes" class="nav-link">Find the nearest nodes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#find-the-fastest-route-by-walking-cycling" class="nav-link">Find the fastest route by walking / cycling</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#visualize-the-results" class="nav-link">5. Visualize the results</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#calculate-travel-times-from-one-to-many-locations" class="nav-link">Calculate travel times from one to many locations</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#alternative-approach-ego-graph" class="nav-link">Alternative approach - Ego graph</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="spatial-network-analysis">
+<h1>6. Spatial Network analysis<a class="headerlink" href="#spatial-network-analysis" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/HTenkanen/AISA/master?urlpath=lab/tree/sources/notebooks/spatial_network_analysis.ipynb"><img alt="https://img.shields.io/badge/Interact-Run%20the%20codes%20in%20browser-orange.svg" src="https://img.shields.io/badge/Interact-Run%20the%20codes%20in%20browser-orange.svg" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p><strong>Networks are everywhere</strong>. Social networks, telecommunication networks, neural networks, and transportation networks
+are all familiar examples how the networks surround us and are very essential to our everyday life. No surprise then,
+that studying complex networks has grown to be a very important topic in various fields of science including biology, medical sciences,
+social science, engineering, geography and many others.</p>
+<p><em>Examples of different kind of networks:</em></p>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQa8mUSXktDN0-PN22ohMps6oTxfLHLjly6ewhvcAAJm37dO9NNW8BHVy4oMe8sKIorNWOZJLM5dVf7/embed?start=false&loop=false&delayms=3000" frameborder="0" width="700" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="lesson-objectives">
+<h2>Lesson objectives<a class="headerlink" href="#lesson-objectives" title="Permalink to this headline">¶</a></h2>
+<p>Today we will focus on <strong>spatial networks</strong> and learn different methods for analyzing
+spatial networks and conduct useful queries such as finding the shortest path along a street network.</p>
+<div class="admonition-learning-goals alert alert-info" id="hint">
+<p class="admonition-title">Learning goals</p>
+<div class="toggle docutils container">
+<p>After this tutorial, you should be able to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Understand typical application areas for spatial network analysis</p></li>
+<li><p>Know the basic concepts and elements of a graph (network)</p></li>
+<li><p>Be able to solve simple spatial network analysis problems using Python programming language</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-additional-materials alert alert-info" id="id1">
+<p class="admonition-title">Additional materials</p>
+<div class="toggle docutils container">
+<p><strong>Literature</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>De Smith, Goodchild, Longley et al. (2020). Geospatial Analysis - <a class="reference external" href="https://www.spatialanalysisonline.com/HTML/index.html?network_and_location_analysis.htm">Chapter 7: Network and Location Analysis</a></p></li>
+</ul>
+</div></blockquote>
+<p><strong>Videos</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZHr0Ch6KRSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div>
+<div class="admonition-exercise-6 alert alert-info" id="id2">
+<p class="admonition-title">Exercise 6</p>
+<div class="toggle docutils container">
+<p>In Exercise 6, you will practice how to work with OpenStreetMap data and conduct network analysis in Python.
+The practical programming sessions will be organized again on Thursday where you can get help from the course assistants.</p>
+<p>You can start working on your copy of Exercise 6 by <a class="reference external" href="https://classroom.github.com/a/8LP9voLx">accepting the GitHub Classroom assignment</a>.</p>
+</div>
+</div>
+<p>Before we dive deeper to spatial networks, <strong>let’s spend a moment with the following task</strong>:</p>
+<div class="admonition-task-1-post-your-ideas-to-the-chat alert alert-primary" id="important">
+<p class="admonition-title">Task 1: Post your ideas to the chat!</p>
+<p>Can you think of any practical examples where spatial network analysis algorithms are used in daily operations of the society?</p>
+<blockquote>
+<div><div class="toggle docutils container">
+<div class="admonition-navigation alert alert-info">
+<p class="admonition-title">1. Navigation</p>
+<p>Show me the best route from A to B:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Car navigation</p></li>
+<li><p>Journey planning (public transport)</p></li>
+<li><p>Emergency way-finding etc.</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-default" id="id3">
+<img alt="../_images/navigator.gif" src="../_images/navigator.gif" />
+<p class="caption"><span class="caption-text"><em>Source: Sygic Ltd</em> (<a class="reference external" href="https://www.sygic.com/blog/2017/introducing-new-gps-navigation-feature-real-view-navigation">2020</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="admonition-spatial-planning alert alert-info">
+<p class="admonition-title">2. Spatial planning</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Where should we locate a new service?</p></li>
+<li><p>Where traffic congestion is most likely going to worsen in the future? (simulations)</p></li>
+<li><p>How many people can reach this location within X minutes?</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-default" id="id4">
+<img alt="../_images/travel_time_isochrones.gif" src="../_images/travel_time_isochrones.gif" />
+<p class="caption"><span class="caption-text"><em>How fast do you reach different parts of the city by different travel modes? (pink: private car, yellow: bicycle, green: public transport) Source: Topi Tjukanov</em> (<a class="reference external" href="https://tjukanov.org/accessibility-fireworks">2018</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="admonition-spatial-economics alert alert-info">
+<p class="admonition-title">3. Spatial economics</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Forecasting economic developments in the area</p></li>
+<li><p>How many more customers/revenue this shop is going to get when the new metro-line opens?</p></li>
+<li><p>Spatial interaction models (e.g. gravity models such as Huff’s)</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-default" id="id5">
+<img alt="../_images/Huffs_model.jpg" src="../_images/Huffs_model.jpg" />
+<p class="caption"><span class="caption-text"><em>Source Ela Dramowicz</em> (<a class="reference external" href="https://www.directionsmag.com/article/3207">2015</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial we will focus on a network analysis methods that relate to way-finding.
+Finding a shortest path from A to B using a specific street network is a very common spatial analytics
+problem that has many practical applications.</p>
+<p>Python provides easy to use tools for conducting spatial network analysis.
+One of the easiest ways to start is to use a library
+called <a class="reference external" href="https://networkx.github.io/documentation/stable/">Networkx</a>
+which is a Python module that provides a lot tools that can be used to
+analyze networks on various different ways. It also contains algorithms
+such as <a class="reference external" href="https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.algorithms.shortest_paths.weighted.single_source_dijkstra.html#networkx.algorithms.shortest_paths.weighted.single_source_dijkstra">Dijkstra’s
+algorithm</a>
+or
+<a class="reference external" href="https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.algorithms.shortest_paths.astar.astar_path.html#networkx.algorithms.shortest_paths.astar.astar_path">A*</a>
+algoritm that are commonly used to find shortest paths along
+transportation network.</p>
+<p>Next, we will learn how to do spatial network analysis in practice.</p>
+</div>
+<div class="section" id="what-is-a-graph">
+<h2>What is a graph?<a class="headerlink" href="#what-is-a-graph" title="Permalink to this headline">¶</a></h2>
+<p>Before continuing, it is good to understand some basic things about a
+<strong>graph</strong> that is the underlying data structure used when conducting
+routing.</p>
+<p>Graphs are, in principle, very simple data structures, and they consists
+of:</p>
+<ol class="arabic simple">
+<li><p><strong>nodes</strong> (e.g. intersections on a street, or a person in social
+network), and</p></li>
+<li><p><strong>edges</strong> (a link that connects the nodes to each other)</p></li>
+</ol>
+<p>A simple graph could look like this:</p>
+<div class="figure align-left" id="id6">
+<a class="reference internal image-reference" href="../_images/graph_elements.png"><img alt="A simple graph." src="../_images/graph_elements.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">A simple graph.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>Here, the letters <code class="docutils literal notranslate"><span class="pre">A,</span> <span class="pre">B,</span> <span class="pre">C,</span> <span class="pre">D,</span> <span class="pre">and</span> <span class="pre">E</span></code> are nodes and the lines that
+goes between them are edges/links.</p>
+<div class="section" id="node-and-edge-attributes">
+<h3>Node and Edge attributes<a class="headerlink" href="#node-and-edge-attributes" title="Permalink to this headline">¶</a></h3>
+<p>In terms of street networks, nodes typically contain the geographical
+information associated with the graph (i.e. coordinates of the
+intersection). Edges typically contain much more information. They
+e.g. contain information about <strong>which nodes are connected to each
+other</strong>, and what is the <strong>cost</strong> to travel between the nodes
+(e.g. time, distance, CO2, etc.). It is also possible to associate
+geographical information to edges (if you e.g. want to show how the
+roads are curved between intersections), but for basic travel time
+analyses this is not needed.</p>
+<div class="figure align-left" id="id7">
+<a class="reference internal image-reference" href="../_images/graph_weights.png"><img alt="Graph with weights." src="../_images/graph_weights.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Graph with weights.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="directed-vs-undirected-graphs">
+<h3>Directed vs Undirected graphs<a class="headerlink" href="#directed-vs-undirected-graphs" title="Permalink to this headline">¶</a></h3>
+<p>Graph can be <strong>directed</strong> or <strong>undirected</strong>, which basically determines
+whether the roads can be travelled to any direction or whether the
+travel direction is restricted to certain direction (e.g. a
+one-way-street).</p>
+<p>In <strong>undirected</strong> graph, it is possible to travel in both directions
+between nodes (e.g. from <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">--&gt;</span> <span class="pre">C</span></code> and from <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">--&gt;</span> <span class="pre">A</span></code>). Undirected
+graphs are typically used e.g. with walking and cycling as with those
+travel modes it is typically possible to travel the same street in any
+direction you like.</p>
+<div class="figure align-left" id="id8">
+<a class="reference internal image-reference" href="../_images/directed_graph.png"><img alt="Directed graph." src="../_images/directed_graph.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Directed graph.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>If the graph is <strong>directed</strong>, it means that you should have a separate
+edge for each direction. If you for example have a graph with only an
+edge that goes from <code class="docutils literal notranslate"><span class="pre">D</span></code> to <code class="docutils literal notranslate"><span class="pre">E</span></code>, you can travel to node <code class="docutils literal notranslate"><span class="pre">E</span></code> from
+<code class="docutils literal notranslate"><span class="pre">D</span></code> but you cannot travel back. In directed graphs, <strong>you need to have
+a separate edge for each travel direction</strong>. Fundamentally this means
+that for a bi-directional road, you should have edges in your data
+(i.e. two separate rows), such as:</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>edge_id</p></th>
+<th class="head"><p>from_node</p></th>
+<th class="head"><p>to_node</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>A</p></td>
+<td><p>C</p></td>
+<td><p><em>edge for direction 1</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>C</p></td>
+<td><p>A</p></td>
+<td><p><em>edge for direction 2</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-task-2-vote alert alert-info" id="note">
+<p class="admonition-title">TASK 2 - Vote!</p>
+<p>The following routes are examples of paths with costs along the network. Which one is faster? Choose A or B.
+(press <strong>+</strong> to open the quiz)</p>
+<blockquote>
+<div><div class="toggle docutils container">
+<div class="admonition-questions-open-in-full-screen-if-difficult-to-see alert alert-info">
+<p class="admonition-title">Questions (open in full screen if difficult to see)</p>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTy8ChevvieeNwA8z7JtTEpKpR6Lt_vl2g-lf3qBZQaYv-jRSE_KIrkZmGl7PVfg0Uz-ZEbfVZc0Rzt/embed?start=false&loop=false&delayms=3000" frameborder="0" width="550" height="350" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>
+</div>
+</div></blockquote>
+</div>
+<p>Next, we will continue, and see how to conduct shortest path analysis by walking/cycling using Python.</p>
+</div>
+</div>
+<div class="section" id="typical-workflow-for-spatial-network-analysis">
+<h2>Typical workflow for spatial network analysis<a class="headerlink" href="#typical-workflow-for-spatial-network-analysis" title="Permalink to this headline">¶</a></h2>
+<p>If you want to conduct network analysis (in any programming language)
+there are a few basic steps that needs to be done before you can start
+routing (<strong>remember the workflow that we learned during the first lesson</strong>).</p>
+<p>These steps are:</p>
+<ol class="arabic simple">
+<li><p><strong>Retrieve data</strong> (such as street network from OSM or Digiroad +
+possibly transit data if routing with PT).</p></li>
+<li><p>(Possibly modify the network by applying custom edge weights
+considering e.g. traffic conditions for car).</p></li>
+<li><p><strong>Build a routable graph</strong> for the routing tool that you are using
+(e.g. NetworkX, Igraph or OpenTripPlanner).</p></li>
+<li><p><strong>Conduct network analysis</strong> (such as shortest path analysis) with
+the routing tool of your choice.</p></li>
+<li><p><strong>Visualize the results</strong> (e.g. the shortest paths on the map, or isochrones)</p></li>
+</ol>
+</div>
+<div class="section" id="network-analysis-by-walking-cycling">
+<h2>Network analysis by walking / cycling<a class="headerlink" href="#network-analysis-by-walking-cycling" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="retrieve-data">
+<h2>1. Retrieve data<a class="headerlink" href="#retrieve-data" title="Permalink to this headline">¶</a></h2>
+<p>As a first step, we need to obtain data for routing.
+<a class="reference external" href="https://github.com/gboeing/osmnx">OSMnx</a> library makes it really
+easy to retrieve routable networks from OpenStreetMap with different
+transport modes (walking, cycling and driving). Osmnx also combines some
+functionalities from <code class="docutils literal notranslate"><span class="pre">networkx</span></code> module to make it straightforward to
+conduct routing along OpenStreetMap data.</p>
+<ul class="simple">
+<li><p>Let’s first download the OSM data from Kamppi that are walkable. In
+OSMnx, we can use a function called <code class="docutils literal notranslate"><span class="pre">.graph_from_place()</span></code> which
+retrieves data from OpenStreetMap. It is possible to specify what
+kind of roads should be retrieved from OSM with <code class="docutils literal notranslate"><span class="pre">network_type</span></code>
+-parameter.</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">osmnx</span> <span class="k">as</span> <span class="nn">ox</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># The place where you want to retrieve the data</span>
+<span class="c1"># OSMnx uses Nominatim/OverPass API to retrieve the data</span>
+<span class="c1"># You can check that your place name is valid from: https://nominatim.openstreetmap.org/</span>
+<span class="n">place</span> <span class="o">=</span> <span class="s2">&quot;Kamppi, Helsinki, Finland&quot;</span>
+
+<span class="c1"># Retrieve pedestrian data</span>
+<span class="n">kamppi</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">gdf_from_place</span><span class="p">(</span><span class="n">place</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_from_place</span><span class="p">(</span><span class="n">place</span><span class="p">,</span> <span class="n">network_type</span><span class="o">=</span><span class="s1">&#39;walk&#39;</span><span class="p">)</span>
+
+<span class="c1"># What did we retrieve?</span>
+<span class="n">G</span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.multidigraph.MultiDiGraph at 0x7f1ba2327cd0&gt;
+</pre></div>
+</div>
+</div>
+<p>Okay, so as we can see the <code class="docutils literal notranslate"><span class="pre">OSMnx</span></code> library fetched some data and
+returned us a <code class="docutils literal notranslate"><span class="pre">MultiDiGraph</span></code> object.</p>
+<p>Let’s see what the data looks like:</p>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/spatial_network_analysis_src_1_0.png" src="../_images/spatial_network_analysis_src_1_0.png" />
+</div>
+<p>As we can see, now we have fetched walkable streets from Kamppi. In the
+figure, the lines are streets and all the nodes are represented with
+light blue color.</p>
+<p><strong>How does the actual data look like?</strong></p>
+<p>There are a couple of ways to access the edge and node attributes. The
+easier way is to use an OSMnx function <code class="docutils literal notranslate"><span class="pre">graph_to_gdfs()</span></code> that returns
+the nodes and edges as GeoDataFrames. The other option to access the
+data is via the graph itself by looping through nodes and edges as
+follow: - <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">node_id,</span> <span class="pre">node</span> <span class="pre">in</span> <span class="pre">G.nodes(data=True)</span></code> -
+<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">fr,</span> <span class="pre">to,</span> <span class="pre">edge</span> <span class="pre">in</span> <span class="pre">G.edges(data=True)</span></code></p>
+<p>Often you want to manipulate nodes and edges somehow. Hence, often it is
+useful to fetch the data into GeoDataFrames:</p>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_to_gdfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># you can flag whether you want to e.g. exclude nodes</span>
+</pre></div>
+</div>
+</div>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the first rows of the nodes</span>
+<span class="n">nodes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>x</th>
+      <th>osmid</th>
+      <th>highway</th>
+      <th>ref</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3216400385</th>
+      <td>60.167552</td>
+      <td>24.934005</td>
+      <td>3216400385</td>
+      <td>turning_circle</td>
+      <td>NaN</td>
+      <td>POINT (24.93400 60.16755)</td>
+    </tr>
+    <tr>
+      <th>1372233731</th>
+      <td>60.162290</td>
+      <td>24.929274</td>
+      <td>1372233731</td>
+      <td>crossing</td>
+      <td>NaN</td>
+      <td>POINT (24.92927 60.16229)</td>
+    </tr>
+    <tr>
+      <th>1005744134</th>
+      <td>60.161622</td>
+      <td>24.924423</td>
+      <td>1005744134</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.92442 60.16162)</td>
+    </tr>
+    <tr>
+      <th>319885318</th>
+      <td>60.165062</td>
+      <td>24.925501</td>
+      <td>319885318</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.92550 60.16506)</td>
+    </tr>
+    <tr>
+      <th>3216400394</th>
+      <td>60.167662</td>
+      <td>24.933920</td>
+      <td>3216400394</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.93392 60.16766)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First rows of the edges</span>
+<span class="n">edges</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>u</th>
+      <th>v</th>
+      <th>key</th>
+      <th>osmid</th>
+      <th>name</th>
+      <th>highway</th>
+      <th>maxspeed</th>
+      <th>oneway</th>
+      <th>length</th>
+      <th>geometry</th>
+      <th>lanes</th>
+      <th>service</th>
+      <th>tunnel</th>
+      <th>access</th>
+      <th>bridge</th>
+      <th>junction</th>
+      <th>ref</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3216400385</td>
+      <td>301360890</td>
+      <td>0</td>
+      <td>15240373</td>
+      <td>Kansakoulukuja</td>
+      <td>residential</td>
+      <td>30</td>
+      <td>False</td>
+      <td>13.177</td>
+      <td>LINESTRING (24.93400 60.16755, 24.93393 60.167...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1372233731</td>
+      <td>298367080</td>
+      <td>0</td>
+      <td>86533507</td>
+      <td>NaN</td>
+      <td>footway</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>6.925</td>
+      <td>LINESTRING (24.92927 60.16229, 24.92917 60.16225)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1372233731</td>
+      <td>292859610</td>
+      <td>0</td>
+      <td>15103120</td>
+      <td>NaN</td>
+      <td>primary_link</td>
+      <td>30</td>
+      <td>False</td>
+      <td>33.874</td>
+      <td>LINESTRING (24.92927 60.16229, 24.92930 60.162...</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1372233731</td>
+      <td>2390968896</td>
+      <td>0</td>
+      <td>[86533504, 23025219]</td>
+      <td>Hietalahdenkatu</td>
+      <td>primary</td>
+      <td>30</td>
+      <td>False</td>
+      <td>68.200</td>
+      <td>LINESTRING (24.92927 60.16229, 24.92868 60.162...</td>
+      <td>[2, 3]</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1372233731</td>
+      <td>4430643601</td>
+      <td>0</td>
+      <td>[154412960, 86533507]</td>
+      <td>NaN</td>
+      <td>footway</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>12.489</td>
+      <td>LINESTRING (24.92927 60.16229, 24.92941 60.162...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+<p>As we can see from this edge-table, we have a lot of information. For
+routing purposes, the most useful attributes are <code class="docutils literal notranslate"><span class="pre">length</span></code> (in meters)
+and <code class="docutils literal notranslate"><span class="pre">maxspeed</span></code> (for car routing) which we can use to calculate travel
+times.</p>
+</div>
+<div class="section" id="modify-the-graph">
+<h2>2. Modify the graph<a class="headerlink" href="#modify-the-graph" title="Permalink to this headline">¶</a></h2>
+<p>Let’s next modify the data in our graph, so that we can conduct the
+shortest path search based on travel time.</p>
+<p>In this case, we specify that the <strong>walking speed is a static 4.5 kmph</strong>
+and <strong>cycling speed is 19 kmph</strong>. We will calculate the cost of travel
+(time) for each road segment (i.e. edge) into a new column <code class="docutils literal notranslate"><span class="pre">walk_t</span></code>
+that we can later use as a weight variable in routing (also known as
+impedance or cost).</p>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the time (in seconds) it takes to walk through road segments</span>
+<span class="n">walk_speed</span> <span class="o">=</span> <span class="mf">4.5</span>  <span class="c1"># kmph</span>
+<span class="n">edges</span><span class="p">[</span><span class="s1">&#39;walk_t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span> <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">walk_speed</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Do the same for cycling</span>
+<span class="n">cycling_speed</span> <span class="o">=</span> <span class="mi">19</span>  <span class="c1"># kmph</span>
+<span class="n">edges</span><span class="p">[</span><span class="s1">&#39;bike_t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span> <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">cycling_speed</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s check what we got</span>
+<span class="n">edges</span><span class="p">[[</span><span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;walk_t&#39;</span><span class="p">,</span> <span class="s1">&#39;bike_t&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>length</th>
+      <th>walk_t</th>
+      <th>bike_t</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>13.177</td>
+      <td>10.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6.925</td>
+      <td>5.5</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>33.874</td>
+      <td>27.1</td>
+      <td>6.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>68.200</td>
+      <td>54.6</td>
+      <td>12.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12.489</td>
+      <td>10.0</td>
+      <td>2.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="build-graph">
+<h2>3. Build graph<a class="headerlink" href="#build-graph" title="Permalink to this headline">¶</a></h2>
+<p>Now as we have calculated the travel time for our edges. We still need
+to convert our nodes and edges back to a NetworkX graph, so that we can
+start using it for routing. When using OSM data fetched with OSMnx this
+can be done easily with function <code class="docutils literal notranslate"><span class="pre">ox.gdfs_to_graph()</span></code>. Notice that
+this <strong>only works when using OSMnx library</strong>, we will later see in
+detail how the graphs are built from scratch which enables you to
+customize them.</p>
+<ul class="simple">
+<li><p>Let’s build the graph with OSMnx:</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">gdfs_to_graph</span><span class="p">(</span><span class="n">gdf_nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">gdf_edges</span><span class="o">=</span><span class="n">edges</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>networkx.classes.multidigraph.MultiDiGraph
+</pre></div>
+</div>
+</div>
+<p>Okay, now we have converted our data back into a NetworkX graph. Let’s
+ensure that our new edge attribute really exists:</p>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check only the first row from edges</span>
+<span class="k">for</span> <span class="n">fr</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;osmid&#39;: 15240373, &#39;name&#39;: &#39;Kansakoulukuja&#39;, &#39;highway&#39;: &#39;residential&#39;, &#39;maxspeed&#39;: &#39;30&#39;, &#39;oneway&#39;: False, &#39;length&#39;: 13.177, &#39;geometry&#39;: &lt;shapely.geometry.linestring.LineString object at 0x7f1ba04c8700&gt;, &#39;walk_t&#39;: 10.5, &#39;bike_t&#39;: 2.5}
+</pre></div>
+</div>
+</div>
+<p>Great, as we can see now we have a new edge attribute in our graph that
+we can use for routing.</p>
+</div>
+<div class="section" id="routing-with-networkx">
+<h2>4. Routing with NetworkX<a class="headerlink" href="#routing-with-networkx" title="Permalink to this headline">¶</a></h2>
+<p>Now we have everything we need to start routing with NetworkX (by
+walking and cycling). But first, let’s again go through some basics
+about routing.</p>
+<div class="section" id="basic-logic-in-routing">
+<h3>Basic logic in routing<a class="headerlink" href="#basic-logic-in-routing" title="Permalink to this headline">¶</a></h3>
+<p>Most (if not all) routing algorithms work more or less in a similar
+manner. The basic steps for finding an optimal route from A to B, is to:
+1. Find the nearest node for origin location * (+ get info about its
+node-id and distance between origin and node) 2. Find the nearest node
+for destination location * (+ get info about its node-id and distance
+between origin and node) 3. Use a routing algorithm to find the shortest
+path between A and B 4. Retrieve edge attributes for the given route(s)
+and summarize them (can be distance, time, CO2, or whatever)</p>
+<p>* in more advanced implementations you might search for the closest
+edge</p>
+<p>This same logic should be applied always when searching for an optimal
+route between a single origin to a single destination, or when
+calculating one-to-many -type of routing queries (producing e.g. travel
+time matrices).</p>
+</div>
+<div class="section" id="find-the-optimal-route-between-two-locations">
+<h3>Find the optimal route between two locations<a class="headerlink" href="#find-the-optimal-route-between-two-locations" title="Permalink to this headline">¶</a></h3>
+<p>Next, we will learn how to find the shortest path between two locations
+using
+<a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra’s</a>
+algorithm.</p>
+<p>First, let’s find the closest nodes for two locations that are located
+in the area. OSMnx provides a handly function for geocoding an address
+<code class="docutils literal notranslate"><span class="pre">ox.geocode()</span></code>. We can use that to retrieve the x and y coordinates of
+our origin and destination.</p>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OSM data is in WGS84 so typically we need to use lat/lon coordinates when searching for the closest node</span>
+
+<span class="c1"># Origin</span>
+<span class="n">orig_address</span> <span class="o">=</span> <span class="s2">&quot;Kalevankatu 16, Helsinki&quot;</span>
+<span class="n">orig_y</span><span class="p">,</span> <span class="n">orig_x</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">orig_address</span><span class="p">)</span>  <span class="c1"># notice the coordinate order (y, x)!</span>
+
+<span class="c1"># Destination</span>
+<span class="n">dest_address</span> <span class="o">=</span> <span class="s2">&quot;Ruoholahdenkatu 24, Helsinki&quot;</span>
+<span class="n">dest_y</span><span class="p">,</span> <span class="n">dest_x</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">dest_address</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Origin coords:&quot;</span><span class="p">,</span> <span class="n">orig_x</span><span class="p">,</span> <span class="n">orig_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Destination coords:&quot;</span><span class="p">,</span> <span class="n">dest_x</span><span class="p">,</span> <span class="n">dest_y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Origin coords: 24.936245 60.1665678
+Destination coords: 24.9246625 60.1641351
+</pre></div>
+</div>
+</div>
+<p>Okay, now we have coordinates for our origin and destination.</p>
+</div>
+<div class="section" id="find-the-nearest-nodes">
+<h3>Find the nearest nodes<a class="headerlink" href="#find-the-nearest-nodes" title="Permalink to this headline">¶</a></h3>
+<p>Next, we need to find the closest nodes from the graph for both of our
+locations. For calculating the closest point we use here <code class="docutils literal notranslate"><span class="pre">'haversine'</span></code>
+formula to get the distance in meters (with <code class="docutils literal notranslate"><span class="pre">return_dist=True</span></code>).</p>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Find the closest nodes for origin and destination</span>
+<span class="n">orig_node_id</span><span class="p">,</span> <span class="n">dist_to_orig</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">get_nearest_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">point</span><span class="o">=</span><span class="p">(</span><span class="n">orig_y</span><span class="p">,</span> <span class="n">orig_x</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;haversine&#39;</span><span class="p">,</span> <span class="n">return_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dest_node_id</span><span class="p">,</span> <span class="n">dist_to_dest</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">get_nearest_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">point</span><span class="o">=</span><span class="p">(</span><span class="n">dest_y</span><span class="p">,</span> <span class="n">dest_x</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;haversine&#39;</span><span class="p">,</span> <span class="n">return_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Origin node-id:&quot;</span><span class="p">,</span> <span class="n">orig_node_id</span><span class="p">,</span> <span class="s2">&quot;and distance:&quot;</span><span class="p">,</span> <span class="n">dist_to_orig</span><span class="p">,</span> <span class="s2">&quot;meters.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Destination node-id:&quot;</span><span class="p">,</span> <span class="n">dest_node_id</span><span class="p">,</span> <span class="s2">&quot;and distance:&quot;</span><span class="p">,</span> <span class="n">dist_to_dest</span><span class="p">,</span> <span class="s2">&quot;meters.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Origin node-id: 298372995 and distance: 43.872491349361404 meters.
+Destination node-id: 5809140035 and distance: 48.867235001413256 meters.
+</pre></div>
+</div>
+</div>
+<p>Now we are ready to start the actual routing with NetworkX.</p>
+</div>
+<div class="section" id="find-the-fastest-route-by-walking-cycling">
+<h3>Find the fastest route by walking / cycling<a class="headerlink" href="#find-the-fastest-route-by-walking-cycling" title="Permalink to this headline">¶</a></h3>
+<p>Now we can do the routing and find the shortest path between the origin
+and target locations by using the <code class="docutils literal notranslate"><span class="pre">dijkstra_path()</span></code> function of
+NetworkX. For getting only the cumulative cost of the trip, we can
+directly use a function <code class="docutils literal notranslate"><span class="pre">dijkstra_path_length()</span></code> that returns the
+travel time without the actual path.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">weight</span></code> -parameter we can specify the attribute that we want to
+use as cost/impedance. We have now three possible weight attributes
+available: <code class="docutils literal notranslate"><span class="pre">'length'</span></code>, <code class="docutils literal notranslate"><span class="pre">'walk_t'</span></code> and <code class="docutils literal notranslate"><span class="pre">'bike_t'</span></code>.</p>
+<ul class="simple">
+<li><p>Let’s first calculate the routes between locations by walking and
+cycling, and also retrieve the travel times</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="c1"># Calculate the paths by walking and cycling</span>
+<span class="n">walk_path</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">dijkstra_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">orig_node_id</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">dest_node_id</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;walk_t&#39;</span><span class="p">)</span>
+<span class="n">bike_path</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">dijkstra_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">orig_node_id</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">dest_node_id</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bike_t&#39;</span><span class="p">)</span>
+
+<span class="c1"># Get also the actual travel times (summarize)</span>
+<span class="n">walk_t</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">dijkstra_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">orig_node_id</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">dest_node_id</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;walk_t&#39;</span><span class="p">)</span>
+<span class="n">bike_t</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">dijkstra_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">orig_node_id</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">dest_node_id</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bike_t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Okay, that was it! Let’s now see what we got as results by visualizing
+the results.</p>
+</div>
+</div>
+<div class="section" id="visualize-the-results">
+<h2>5. Visualize the results<a class="headerlink" href="#visualize-the-results" title="Permalink to this headline">¶</a></h2>
+<p>For visualization purposes, we can use a handy function again from OSMnx
+called <code class="docutils literal notranslate"><span class="pre">ox.plot_graph_route()</span></code> (for static) or
+<code class="docutils literal notranslate"><span class="pre">ox.plot_route_folium()</span></code> (for interactive plot).</p>
+<ul class="simple">
+<li><p>Let’s first make static maps</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Walking</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">walk_path</span><span class="p">)</span>
+
+<span class="c1"># Add the travel time as title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Walk time </span><span class="si">{t: .1f}</span><span class="s2"> minutes.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">walk_t</span><span class="o">/</span><span class="mi">60</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="../_images/spatial_network_analysis_src_11_0.png" src="../_images/spatial_network_analysis_src_11_0.png" />
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Walk time  12.0 minutes.&#39;)
+</pre></div>
+</div>
+</div>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cycling</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">bike_path</span><span class="p">)</span>
+
+<span class="c1"># Add the travel time as title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Cycling time </span><span class="si">{t: .1f}</span><span class="s2"> minutes.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">bike_t</span><span class="o">/</span><span class="mi">60</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="../_images/spatial_network_analysis_src_12_0.png" src="../_images/spatial_network_analysis_src_12_0.png" />
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Cycling time  2.8 minutes.&#39;)
+</pre></div>
+</div>
+</div>
+<p>Great! Now we have successfully found the optimal route between our
+origin and destination and we also have estimates about the travel time
+that it takes to travel between the locations by walking and cycling. As
+we can see, the route for both travel modes is exactly the same which is
+natural, as the only thing that changed here was the constant travel
+speed.</p>
+<ul class="simple">
+<li><p>Let’s still finally see an example how you can plot a nice
+interactive map out of our results with OSMnx:</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ox</span><span class="o">.</span><span class="n">plot_route_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">walk_path</span><span class="p">,</span> <span class="n">popup_attribute</span><span class="o">=</span><span class="s1">&#39;walk_t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe src="about:blank" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" data-html=PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjYuMC9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjYuMC9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUiID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1ID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1IiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFs2MC4xNjUyOTI5ODI5OTQ2ODYsIDI0LjkzMDM5MzI3Nzk1NTE3Ml0sCiAgICAgICAgICAgICAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NywKICAgICAgICAgICAgICAgICAgICB6b29tOiAxLAogICAgICAgICAgICAgICAgICAgIHpvb21Db250cm9sOiB0cnVlLAogICAgICAgICAgICAgICAgICAgIHByZWZlckNhbnZhczogZmFsc2UsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICk7CgogICAgICAgICAgICAKCiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfYmRjMWUzMzkyNDM3NDFmZjk3Njg0MGZiYzg4YjY0NTIgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICJodHRwczovL2NhcnRvZGItYmFzZW1hcHMte3N9Lmdsb2JhbC5zc2wuZmFzdGx5Lm5ldC9saWdodF9hbGwve3p9L3t4fS97eX0ucG5nIiwKICAgICAgICAgICAgICAgIHsiYXR0cmlidXRpb24iOiAiXHUwMDI2Y29weTsgXHUwMDNjYSBocmVmPVwiaHR0cDovL3d3dy5vcGVuc3RyZWV0bWFwLm9yZy9jb3B5cmlnaHRcIlx1MDAzZU9wZW5TdHJlZXRNYXBcdTAwM2MvYVx1MDAzZSBjb250cmlidXRvcnMgXHUwMDI2Y29weTsgXHUwMDNjYSBocmVmPVwiaHR0cDovL2NhcnRvZGIuY29tL2F0dHJpYnV0aW9uc1wiXHUwMDNlQ2FydG9EQlx1MDAzYy9hXHUwMDNlLCBDYXJ0b0RCIFx1MDAzY2EgaHJlZiA9XCJodHRwOi8vY2FydG9kYi5jb20vYXR0cmlidXRpb25zXCJcdTAwM2VhdHRyaWJ1dGlvbnNcdTAwM2MvYVx1MDAzZSIsICJkZXRlY3RSZXRpbmEiOiBmYWxzZSwgIm1heE5hdGl2ZVpvb20iOiAxOCwgIm1heFpvb20iOiAxOCwgIm1pblpvb20iOiAwLCAibm9XcmFwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInN1YmRvbWFpbnMiOiAiYWJjIiwgInRtcyI6IGZhbHNlfQogICAgICAgICAgICApLmFkZFRvKG1hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSk7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHBvbHlfbGluZV83M2QxMmExMWQwMzE0ZGZhOTljZmU4OGRiNmE3ZDE0NCA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICBbWzYwLjE2Njg0NjIsIDI0LjkzNjgwN10sIFs2MC4xNjY4ODY3LCAyNC45MzY3NTM1XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9jZWJjOTg0MjBlZTQ0ZjczYjhlMjU1NTJjMGEyZjI3MSA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNzMzOTY2MTJlZTU1NGQ1YThhZGEwNWZlNWE0OTExMzQgPSAkKGA8ZGl2IGlkPSJodG1sXzczMzk2NjEyZWU1NTRkNWE4YWRhMDVmZTVhNDkxMTM0IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij40LjM8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfY2ViYzk4NDIwZWU0NGY3M2I4ZTI1NTUyYzBhMmYyNzEuc2V0Q29udGVudChodG1sXzczMzk2NjEyZWU1NTRkNWE4YWRhMDVmZTVhNDkxMTM0KTsKICAgICAgICAKCiAgICAgICAgcG9seV9saW5lXzczZDEyYTExZDAzMTRkZmE5OWNmZTg4ZGI2YTdkMTQ0LmJpbmRQb3B1cChwb3B1cF9jZWJjOTg0MjBlZTQ0ZjczYjhlMjU1NTJjMGEyZjI3MSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIHBvbHlfbGluZV9hYWU3NGQ4NTBhMGM0ZjA2OGRiZWQ4YzU2MzY3YmM1OCA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICBbWzYwLjE2Njg4NjcsIDI0LjkzNjc1MzVdLCBbNjAuMTY2MzY5MSwgMjQuOTM1MjQ3MV0sIFs2MC4xNjYzMTE1LCAyNC45MzUwNzkzXV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF8wZDVhZWE2ODg5MmE0MjYyYTg0ZmJlMTc3MTliM2JmNiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfODZmNmQwOGJmZTdjNDQ0ODhiY2E4NmE0ZjY3MmY0NzUgPSAkKGA8ZGl2IGlkPSJodG1sXzg2ZjZkMDhiZmU3YzQ0NDg4YmNhODZhNGY2NzJmNDc1IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij45MC4wPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzBkNWFlYTY4ODkyYTQyNjJhODRmYmUxNzcxOWIzYmY2LnNldENvbnRlbnQoaHRtbF84NmY2ZDA4YmZlN2M0NDQ4OGJjYTg2YTRmNjcyZjQ3NSk7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV9hYWU3NGQ4NTBhMGM0ZjA2OGRiZWQ4YzU2MzY3YmM1OC5iaW5kUG9wdXAocG9wdXBfMGQ1YWVhNjg4OTJhNDI2MmE4NGZiZTE3NzE5YjNiZjYpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfMWEwNTA4YzVkODNlNDAyOTg0M2Y0NTNiOTU0ZmQ2YjkgPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjYzMTE1LCAyNC45MzUwNzkzXSwgWzYwLjE2NjIzMzcsIDI0LjkzNDg1MzFdLCBbNjAuMTY2MTYxNiwgMjQuOTM0NjQzM10sIFs2MC4xNjYxNDc0LCAyNC45MzQ2MDE4XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9mMGE5NTc1YjBiYzY0ZWIzYTc5NDJmMTljMzY3M2VkMCA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNDBkMWJhM2RlM2I1NDdhYjg4NmUzZTdlNDM2YmMzY2IgPSAkKGA8ZGl2IGlkPSJodG1sXzQwZDFiYTNkZTNiNTQ3YWI4ODZlM2U3ZTQzNmJjM2NiIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij4yNS43PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2YwYTk1NzViMGJjNjRlYjNhNzk0MmYxOWMzNjczZWQwLnNldENvbnRlbnQoaHRtbF80MGQxYmEzZGUzYjU0N2FiODg2ZTNlN2U0MzZiYzNjYik7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV8xYTA1MDhjNWQ4M2U0MDI5ODQzZjQ1M2I5NTRmZDZiOS5iaW5kUG9wdXAocG9wdXBfZjBhOTU3NWIwYmM2NGViM2E3OTQyZjE5YzM2NzNlZDApCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfYWQzM2JjMGRkZTUxNGE3Y2FkN2I1ZGQ3YTNlM2Q2ODUgPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjYxNDc0LCAyNC45MzQ2MDE4XSwgWzYwLjE2NjExNzUsIDI0LjkzNDUxNDhdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzVmODk3MjJmNTRhNDRmYTk4ZDM2ZTNlMmM5YjQ2NWQ3ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF82MmI0Nzk4YjhhNTU0M2QyODBiNGFjMjdjNjM1NGUzOCA9ICQoYDxkaXYgaWQ9Imh0bWxfNjJiNDc5OGI4YTU1NDNkMjgwYjRhYzI3YzYzNTRlMzgiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjQuNzwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF81Zjg5NzIyZjU0YTQ0ZmE5OGQzNmUzZTJjOWI0NjVkNy5zZXRDb250ZW50KGh0bWxfNjJiNDc5OGI4YTU1NDNkMjgwYjRhYzI3YzYzNTRlMzgpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfYWQzM2JjMGRkZTUxNGE3Y2FkN2I1ZGQ3YTNlM2Q2ODUuYmluZFBvcHVwKHBvcHVwXzVmODk3MjJmNTRhNDRmYTk4ZDM2ZTNlMmM5YjQ2NWQ3KQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzk0NmFiOTdiMDY2NjQ3ZjQ4NTA0NGM4YzQ1MmUxNjY2ID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY2MTE3NSwgMjQuOTM0NTE0OF0sIFs2MC4xNjYwODY2LCAyNC45MzQ0MjQ5XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF82YWY3YzJkMzY0MTg0MzY3OTQ5M2I2NmU4ZTNjN2ZlYiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfOTEzY2I0ZDRiZDc4NDFiMDllNjYwZGQ5M2U0MmM0MGEgPSAkKGA8ZGl2IGlkPSJodG1sXzkxM2NiNGQ0YmQ3ODQxYjA5ZTY2MGRkOTNlNDJjNDBhIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij40Ljg8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNmFmN2MyZDM2NDE4NDM2Nzk0OTNiNjZlOGUzYzdmZWIuc2V0Q29udGVudChodG1sXzkxM2NiNGQ0YmQ3ODQxYjA5ZTY2MGRkOTNlNDJjNDBhKTsKICAgICAgICAKCiAgICAgICAgcG9seV9saW5lXzk0NmFiOTdiMDY2NjQ3ZjQ4NTA0NGM4YzQ1MmUxNjY2LmJpbmRQb3B1cChwb3B1cF82YWY3YzJkMzY0MTg0MzY3OTQ5M2I2NmU4ZTNjN2ZlYikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIHBvbHlfbGluZV9jNzJhZGM0MTMyMmU0MWMzODIxZTYxMzdjZDUxYTQ4OCA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICBbWzYwLjE2NjA4NjYsIDI0LjkzNDQyNDldLCBbNjAuMTY2MDY4MiwgMjQuOTM0MzcyNV0sIFs2MC4xNjU3MzcxLCAyNC45MzM0Mjk0XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF82MmMzOWRkNDJkYWU0Yzk1YWU2Y2FlMWM0MDI0NWM5MyA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNTkxYjY2MDcwNmVjNDQ0ZmI2NWI2NzE3NzBkYzhhZTIgPSAkKGA8ZGl2IGlkPSJodG1sXzU5MWI2NjA3MDZlYzQ0NGZiNjViNjcxNzcwZGM4YWUyIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij41My45PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzYyYzM5ZGQ0MmRhZTRjOTVhZTZjYWUxYzQwMjQ1YzkzLnNldENvbnRlbnQoaHRtbF81OTFiNjYwNzA2ZWM0NDRmYjY1YjY3MTc3MGRjOGFlMik7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV9jNzJhZGM0MTMyMmU0MWMzODIxZTYxMzdjZDUxYTQ4OC5iaW5kUG9wdXAocG9wdXBfNjJjMzlkZDQyZGFlNGM5NWFlNmNhZTFjNDAyNDVjOTMpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfODU2M2IwNjA5ZDVhNDY0MTk0ZGZlYjRjODllYjljMDEgPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjU3MzcxLCAyNC45MzM0Mjk0XSwgWzYwLjE2NTc4NDMsIDI0LjkzMzM2ODldXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzhmOWE5ODNmZmU1NzQ3ZDE5NTA5MGQ3MTQwZjNkNmUzID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF9hZDZkYTg0NWYwMjg0NjA0YjNiZWRkMDgzMTFlYjYzMiA9ICQoYDxkaXYgaWQ9Imh0bWxfYWQ2ZGE4NDVmMDI4NDYwNGIzYmVkZDA4MzExZWI2MzIiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjUuMDwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF84ZjlhOTgzZmZlNTc0N2QxOTUwOTBkNzE0MGYzZDZlMy5zZXRDb250ZW50KGh0bWxfYWQ2ZGE4NDVmMDI4NDYwNGIzYmVkZDA4MzExZWI2MzIpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfODU2M2IwNjA5ZDVhNDY0MTk0ZGZlYjRjODllYjljMDEuYmluZFBvcHVwKHBvcHVwXzhmOWE5ODNmZmU1NzQ3ZDE5NTA5MGQ3MTQwZjNkNmUzKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzY1ODI1MjQyNGRjYzQ1N2Q5MzQ4ZmYyZGNkZWM3NmJmID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY1Nzg0MywgMjQuOTMzMzY4OV0sIFs2MC4xNjU3OTM5LCAyNC45MzMzNTMzXSwgWzYwLjE2NTg4MiwgMjQuOTMzMjI0OF0sIFs2MC4xNjU5MDgzLCAyNC45MzMxNzZdLCBbNjAuMTY1OTcwMSwgMjQuOTMzMDg1OV0sIFs2MC4xNjYwMzE1LCAyNC45MzI5NDRdLCBbNjAuMTY2MTAzNiwgMjQuOTMyODA5OV0sIFs2MC4xNjYxMTM3LCAyNC45MzI3OTE3XSwgWzYwLjE2NjIwODIsIDI0LjkzMjY1NjVdLCBbNjAuMTY2MjE4LCAyNC45MzI2NDIxXV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kMzg0OWQxMWQ1ZjA0MzBjYTUyOTEzMjg2NjVjMGMwZiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfMDc4NjMwZWQzYWI3NDBjZGI1NTg3YzA2OWE5OTIyN2UgPSAkKGA8ZGl2IGlkPSJodG1sXzA3ODYzMGVkM2FiNzQwY2RiNTU4N2MwNjlhOTkyMjdlIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij41MC40PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2QzODQ5ZDExZDVmMDQzMGNhNTI5MTMyODY2NWMwYzBmLnNldENvbnRlbnQoaHRtbF8wNzg2MzBlZDNhYjc0MGNkYjU1ODdjMDY5YTk5MjI3ZSk7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV82NTgyNTI0MjRkY2M0NTdkOTM0OGZmMmRjZGVjNzZiZi5iaW5kUG9wdXAocG9wdXBfZDM4NDlkMTFkNWYwNDMwY2E1MjkxMzI4NjY1YzBjMGYpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfNGM4YjU2NzE1ZjhkNDUxYmFlZjI0ZWY5ODI5YjRjNDggPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjYyMTgsIDI0LjkzMjY0MjFdLCBbNjAuMTY2MjU1OSwgMjQuOTMyNTZdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzQwNjAxNTUxYzE0NjRjYjRiOGE2MWIyNDYwOGExNTJmID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8xODlhNzZjYThmM2Q0NWU5YjI5ZjkzYzE0MWJlN2QxOCA9ICQoYDxkaXYgaWQ9Imh0bWxfMTg5YTc2Y2E4ZjNkNDVlOWIyOWY5M2MxNDFiZTdkMTgiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjUuMDwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF80MDYwMTU1MWMxNDY0Y2I0YjhhNjFiMjQ2MDhhMTUyZi5zZXRDb250ZW50KGh0bWxfMTg5YTc2Y2E4ZjNkNDVlOWIyOWY5M2MxNDFiZTdkMTgpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfNGM4YjU2NzE1ZjhkNDUxYmFlZjI0ZWY5ODI5YjRjNDguYmluZFBvcHVwKHBvcHVwXzQwNjAxNTUxYzE0NjRjYjRiOGE2MWIyNDYwOGExNTJmKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lX2JkNGViMWU1NGZmMTQ4MDZhMTUwYWVhOTQ4MmE5MzI1ID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY2MjU1OSwgMjQuOTMyNTZdLCBbNjAuMTY2MjIwOCwgMjQuOTMyNDU5Ml1dLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiNjYzAwMDAiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IGZhbHNlLCAiZmlsbENvbG9yIjogIiNjYzAwMDAiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAibm9DbGlwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiA1fQogICAgICAgICAgICApLmFkZFRvKG1hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfODNjOTNjMTNmZTE2NDk1YjkwYjdlOGQyNjI3NGMwMDkgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzZiYjlhMjU1MDU0NjRiODNhOGI4ZDI4NmUwOGIwMGFkID0gJChgPGRpdiBpZD0iaHRtbF82YmI5YTI1NTA1NDY0YjgzYThiOGQyODZlMDhiMDBhZCIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+NS40PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzgzYzkzYzEzZmUxNjQ5NWI5MGI3ZThkMjYyNzRjMDA5LnNldENvbnRlbnQoaHRtbF82YmI5YTI1NTA1NDY0YjgzYThiOGQyODZlMDhiMDBhZCk7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV9iZDRlYjFlNTRmZjE0ODA2YTE1MGFlYTk0ODJhOTMyNS5iaW5kUG9wdXAocG9wdXBfODNjOTNjMTNmZTE2NDk1YjkwYjdlOGQyNjI3NGMwMDkpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfNWEwYjFiZDQwYzFlNDQ2ZTk5ODA1NzNlNzI0MTcyYTkgPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjYyMjA4LCAyNC45MzI0NTkyXSwgWzYwLjE2NjI1MzYsIDI0LjkzMjM2XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kMWIxOWNiMTAwY2U0ZDQ4OTIxMDhmMDIzMWNjMTAzMiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfMTRjYWVjOTEyNTdjNDY1OTk0YmUwMjhiMWZlMGExZWUgPSAkKGA8ZGl2IGlkPSJodG1sXzE0Y2FlYzkxMjU3YzQ2NTk5NGJlMDI4YjFmZTBhMWVlIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij41LjM8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZDFiMTljYjEwMGNlNGQ0ODkyMTA4ZjAyMzFjYzEwMzIuc2V0Q29udGVudChodG1sXzE0Y2FlYzkxMjU3YzQ2NTk5NGJlMDI4YjFmZTBhMWVlKTsKICAgICAgICAKCiAgICAgICAgcG9seV9saW5lXzVhMGIxYmQ0MGMxZTQ0NmU5OTgwNTczZTcyNDE3MmE5LmJpbmRQb3B1cChwb3B1cF9kMWIxOWNiMTAwY2U0ZDQ4OTIxMDhmMDIzMWNjMTAzMikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIHBvbHlfbGluZV8yYmUwNDcwYzYxM2Q0ZmU0YjNiZDUwMzZmMmY4YmVjYyA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICBbWzYwLjE2NjI1MzYsIDI0LjkzMjM2XSwgWzYwLjE2NjE5ODIsIDI0LjkzMjIwM11dLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiNjYzAwMDAiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IGZhbHNlLCAiZmlsbENvbG9yIjogIiNjYzAwMDAiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAibm9DbGlwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiA1fQogICAgICAgICAgICApLmFkZFRvKG1hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfYmUxNGMxZTM1N2QxNDRmYWJhZDAyYzhmZGI0NGMwMjcgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzJjZWM3MzNmMDUyMDQ1YjliYWI4ZmRhZDU4NGIzYTFiID0gJChgPGRpdiBpZD0iaHRtbF8yY2VjNzMzZjA1MjA0NWI5YmFiOGZkYWQ1ODRiM2ExYiIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+OC41PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2JlMTRjMWUzNTdkMTQ0ZmFiYWQwMmM4ZmRiNDRjMDI3LnNldENvbnRlbnQoaHRtbF8yY2VjNzMzZjA1MjA0NWI5YmFiOGZkYWQ1ODRiM2ExYik7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV8yYmUwNDcwYzYxM2Q0ZmU0YjNiZDUwMzZmMmY4YmVjYy5iaW5kUG9wdXAocG9wdXBfYmUxNGMxZTM1N2QxNDRmYWJhZDAyYzhmZGI0NGMwMjcpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfMzkyNGQ4NmE1ZjVjNGU2MjkwMjNhNDE0OTA4OWNmMzggPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjYxOTgyLCAyNC45MzIyMDNdLCBbNjAuMTY1ODU2NCwgMjQuOTMxMjUyMV1dLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiNjYzAwMDAiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IGZhbHNlLCAiZmlsbENvbG9yIjogIiNjYzAwMDAiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAibm9DbGlwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiA1fQogICAgICAgICAgICApLmFkZFRvKG1hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfZDdiZDU1NTQ5ZDZjNGY1YWFlMjRmYzc2MTk0NTQ3NjYgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzk0OTNjOWIwMzBkMTRkNjVhYmI0NjZhYTdmNmUyZGZmID0gJChgPGRpdiBpZD0iaHRtbF85NDkzYzliMDMwZDE0ZDY1YWJiNDY2YWE3ZjZlMmRmZiIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+NTEuOTwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF9kN2JkNTU1NDlkNmM0ZjVhYWUyNGZjNzYxOTQ1NDc2Ni5zZXRDb250ZW50KGh0bWxfOTQ5M2M5YjAzMGQxNGQ2NWFiYjQ2NmFhN2Y2ZTJkZmYpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfMzkyNGQ4NmE1ZjVjNGU2MjkwMjNhNDE0OTA4OWNmMzguYmluZFBvcHVwKHBvcHVwX2Q3YmQ1NTU0OWQ2YzRmNWFhZTI0ZmM3NjE5NDU0NzY2KQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzk1ZWEzZGFhZDVjOTRhMTVhNTczMmJlOThhMjdlYzlkID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY1ODU2NCwgMjQuOTMxMjUyMV0sIFs2MC4xNjU4MjE4LCAyNC45MzExNjE0XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kMTEwNTZhMjU2NjM0YmJjODUwNWVjMDU1MzI1MjNlMCA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNzczNDUxMjJhOTAzNGQ1ZWFmODUxZTY4MDMzMmE0NDEgPSAkKGA8ZGl2IGlkPSJodG1sXzc3MzQ1MTIyYTkwMzRkNWVhZjg1MWU2ODAzMzJhNDQxIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij41LjE8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZDExMDU2YTI1NjYzNGJiYzg1MDVlYzA1NTMyNTIzZTAuc2V0Q29udGVudChodG1sXzc3MzQ1MTIyYTkwMzRkNWVhZjg1MWU2ODAzMzJhNDQxKTsKICAgICAgICAKCiAgICAgICAgcG9seV9saW5lXzk1ZWEzZGFhZDVjOTRhMTVhNTczMmJlOThhMjdlYzlkLmJpbmRQb3B1cChwb3B1cF9kMTEwNTZhMjU2NjM0YmJjODUwNWVjMDU1MzI1MjNlMCkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIHBvbHlfbGluZV9iMjk0YmI2OTkyNDg0ZTZiOTJhMDg3OWYxZjA0YmNjYyA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICBbWzYwLjE2NTgyMTgsIDI0LjkzMTE2MTRdLCBbNjAuMTY1NzkzOSwgMjQuOTMxMDgxMl1dLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiNjYzAwMDAiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IGZhbHNlLCAiZmlsbENvbG9yIjogIiNjYzAwMDAiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAibm9DbGlwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiA1fQogICAgICAgICAgICApLmFkZFRvKG1hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfZGI1YjlkMDlmOTcyNGNhY2EyNzAwMGJmNTJiYmJhM2EgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sX2ZlZjY4OTA0OTI2YzRmZWNiNmU2YjEzMWE5ZmYyMWU0ID0gJChgPGRpdiBpZD0iaHRtbF9mZWY2ODkwNDkyNmM0ZmVjYjZlNmIxMzFhOWZmMjFlNCIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+NC4zPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2RiNWI5ZDA5Zjk3MjRjYWNhMjcwMDBiZjUyYmJiYTNhLnNldENvbnRlbnQoaHRtbF9mZWY2ODkwNDkyNmM0ZmVjYjZlNmIxMzFhOWZmMjFlNCk7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV9iMjk0YmI2OTkyNDg0ZTZiOTJhMDg3OWYxZjA0YmNjYy5iaW5kUG9wdXAocG9wdXBfZGI1YjlkMDlmOTcyNGNhY2EyNzAwMGJmNTJiYmJhM2EpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfZGJjZTNjNDE5Zjk0NDE0ZjhmNDNlMTM2MzYxOTE5ZjcgPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjU3OTM5LCAyNC45MzEwODEyXSwgWzYwLjE2NDg1OTMsIDI0LjkyODQ0MTRdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzU2MTZkOTcxOGEwYjRkOWRiYjMxNWQyNzRhM2FiYWFlID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8wZmIxMTA2NmJiN2Y0ODBkYWQ4NWU2YjI0NmY5MjBjZSA9ICQoYDxkaXYgaWQ9Imh0bWxfMGZiMTEwNjZiYjdmNDgwZGFkODVlNmIyNDZmOTIwY2UiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjE0My40PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzU2MTZkOTcxOGEwYjRkOWRiYjMxNWQyNzRhM2FiYWFlLnNldENvbnRlbnQoaHRtbF8wZmIxMTA2NmJiN2Y0ODBkYWQ4NWU2YjI0NmY5MjBjZSk7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV9kYmNlM2M0MTlmOTQ0MTRmOGY0M2UxMzYzNjE5MTlmNy5iaW5kUG9wdXAocG9wdXBfNTYxNmQ5NzE4YTBiNGQ5ZGJiMzE1ZDI3NGEzYWJhYWUpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfYjdjM2U1ZDgwMTE5NDM2NGIzODNjNjM2MWYxYjkyMTUgPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjQ4NTkzLCAyNC45Mjg0NDE0XSwgWzYwLjE2NDgyOTksIDI0LjkyODM2MzhdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzc3YTI2Mzc0MDZlODRhMmRhMWFlOTg4NjYzZDA1YWY2ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF84NWFmZDUxNmFjNjI0NjhkYjY5OGJiNDQ2Y2UzOGFlMSA9ICQoYDxkaXYgaWQ9Imh0bWxfODVhZmQ1MTZhYzYyNDY4ZGI2OThiYjQ0NmNlMzhhZTEiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjQuMzwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF83N2EyNjM3NDA2ZTg0YTJkYTFhZTk4ODY2M2QwNWFmNi5zZXRDb250ZW50KGh0bWxfODVhZmQ1MTZhYzYyNDY4ZGI2OThiYjQ0NmNlMzhhZTEpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfYjdjM2U1ZDgwMTE5NDM2NGIzODNjNjM2MWYxYjkyMTUuYmluZFBvcHVwKHBvcHVwXzc3YTI2Mzc0MDZlODRhMmRhMWFlOTg4NjYzZDA1YWY2KQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzU4ZGM4Yzc2OTRlMDQ3MWZhYThkZDZjNmRmYzk3NGExID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY0ODI5OSwgMjQuOTI4MzYzOF0sIFs2MC4xNjQ3OTYxLCAyNC45MjgyNjk4XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kODUyNTM0ZDdiNGQ0NDFjODQ3NDFmYWIxYzNmZTJmMiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfN2UxYjMxMTNkNGYxNGI1ZDgwZGFhMGViNzRmNDYwNWIgPSAkKGA8ZGl2IGlkPSJodG1sXzdlMWIzMTEzZDRmMTRiNWQ4MGRhYTBlYjc0ZjQ2MDViIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij41LjE8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZDg1MjUzNGQ3YjRkNDQxYzg0NzQxZmFiMWMzZmUyZjIuc2V0Q29udGVudChodG1sXzdlMWIzMTEzZDRmMTRiNWQ4MGRhYTBlYjc0ZjQ2MDViKTsKICAgICAgICAKCiAgICAgICAgcG9seV9saW5lXzU4ZGM4Yzc2OTRlMDQ3MWZhYThkZDZjNmRmYzk3NGExLmJpbmRQb3B1cChwb3B1cF9kODUyNTM0ZDdiNGQ0NDFjODQ3NDFmYWIxYzNmZTJmMikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIHBvbHlfbGluZV9kNWRkNDYxZDY1MjU0OGJmOGIwYWFmYzI4NmU5ZWVkOSA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICBbWzYwLjE2NDc5NjEsIDI0LjkyODI2OThdLCBbNjAuMTY0MzMyNCwgMjQuOTI2OTc3M11dLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiNjYzAwMDAiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IGZhbHNlLCAiZmlsbENvbG9yIjogIiNjYzAwMDAiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAibm9DbGlwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiA1fQogICAgICAgICAgICApLmFkZFRvKG1hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfMWYzMTRhOTVmYzNiNGEzZDhlNTIyNmVhM2E0ZWIzYjYgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sX2U1NzhhYTI2NzgxZDQyZDRhMWI4NTI2MTZhMmNhNGNjID0gJChgPGRpdiBpZD0iaHRtbF9lNTc4YWEyNjc4MWQ0MmQ0YTFiODUyNjE2YTJjYTRjYyIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+NzAuNTwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF8xZjMxNGE5NWZjM2I0YTNkOGU1MjI2ZWEzYTRlYjNiNi5zZXRDb250ZW50KGh0bWxfZTU3OGFhMjY3ODFkNDJkNGExYjg1MjYxNmEyY2E0Y2MpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfZDVkZDQ2MWQ2NTI1NDhiZjhiMGFhZmMyODZlOWVlZDkuYmluZFBvcHVwKHBvcHVwXzFmMzE0YTk1ZmMzYjRhM2Q4ZTUyMjZlYTNhNGViM2I2KQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzg2Mjk4MzZkZTRhMDQ0YThhZWE3NjliZDNlMjRiNmI3ID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY0MzMyNCwgMjQuOTI2OTc3M10sIFs2MC4xNjQyNzE4LCAyNC45MjY4MTQ4XSwgWzYwLjE2NDI3MzgsIDI0LjkyNjc3Nl1dLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiNjYzAwMDAiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IGZhbHNlLCAiZmlsbENvbG9yIjogIiNjYzAwMDAiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAibm9DbGlwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiA1fQogICAgICAgICAgICApLmFkZFRvKG1hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfZGFiNWU4NmM4MzU2NDJjOGEzY2ZkYmU0ODUwMzZkODEgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sX2E0MGQyNGY3NzM4MjQ2YjI5M2ZmOGM3YzBkYTc4YjhmID0gJChgPGRpdiBpZD0iaHRtbF9hNDBkMjRmNzczODI0NmIyOTNmZjhjN2MwZGE3OGI4ZiIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+MTAuNzwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF9kYWI1ZTg2YzgzNTY0MmM4YTNjZmRiZTQ4NTAzNmQ4MS5zZXRDb250ZW50KGh0bWxfYTQwZDI0Zjc3MzgyNDZiMjkzZmY4YzdjMGRhNzhiOGYpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfODYyOTgzNmRlNGEwNDRhOGFlYTc2OWJkM2UyNGI2YjcuYmluZFBvcHVwKHBvcHVwX2RhYjVlODZjODM1NjQyYzhhM2NmZGJlNDg1MDM2ZDgxKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lX2I3OTJkYmZhMTFjMjQ0NWJiYWVkMWNmNmFhMDIwYjI4ID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY0MjczOCwgMjQuOTI2Nzc2XSwgWzYwLjE2NDIyODUsIDI0LjkyNjY0ODRdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwX2YwMmEyZjZhYTY1NTRiYzQ5ZTUwMzBmYTIxNmJkMzg4ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF81ZDA4Mzk2MDg3Y2I0MjQ2OWMwOWQzYjY1OGYyN2Y5ZCA9ICQoYDxkaXYgaWQ9Imh0bWxfNWQwODM5NjA4N2NiNDI0NjljMDlkM2I2NThmMjdmOWQiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjYuOTwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF9mMDJhMmY2YWE2NTU0YmM0OWU1MDMwZmEyMTZiZDM4OC5zZXRDb250ZW50KGh0bWxfNWQwODM5NjA4N2NiNDI0NjljMDlkM2I2NThmMjdmOWQpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfYjc5MmRiZmExMWMyNDQ1YmJhZWQxY2Y2YWEwMjBiMjguYmluZFBvcHVwKHBvcHVwX2YwMmEyZjZhYTY1NTRiYzQ5ZTUwMzBmYTIxNmJkMzg4KQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzRhZTE2ZTc2MTUzMjQzZjhiZGY3MGU1NDRiNTRlMDg5ID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY0MjI4NSwgMjQuOTI2NjQ4NF0sIFs2MC4xNjQxODUsIDI0LjkyNjUyOTNdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzI3NTUxYTU1Mjg3YTQ1MjZiMGE4MGI4YmE0MGNhMjcxID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF81NGZlN2U0Yzg4MzU0NmQ4YjI4OWYwYmZhNWJjODRmNiA9ICQoYDxkaXYgaWQ9Imh0bWxfNTRmZTdlNGM4ODM1NDZkOGIyODlmMGJmYTViYzg0ZjYiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjYuNTwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF8yNzU1MWE1NTI4N2E0NTI2YjBhODBiOGJhNDBjYTI3MS5zZXRDb250ZW50KGh0bWxfNTRmZTdlNGM4ODM1NDZkOGIyODlmMGJmYTViYzg0ZjYpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfNGFlMTZlNzYxNTMyNDNmOGJkZjcwZTU0NGI1NGUwODkuYmluZFBvcHVwKHBvcHVwXzI3NTUxYTU1Mjg3YTQ1MjZiMGE4MGI4YmE0MGNhMjcxKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lX2MyYWI0NGE5MTViNjQ5NzhiMzI4ODM5MmQ4ZTg2OTJjID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY0MTg1LCAyNC45MjY1MjkzXSwgWzYwLjE2NDE0OTUsIDI0LjkyNjQyNjFdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzBlMmMyNjVkZmUwZDQxNmVhZDA3ZjNmMDliMzExNWZiID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF9mZmIzM2RkNDFjZGI0NjU5ODU0YjUzNGIwZGE5NThiZiA9ICQoYDxkaXYgaWQ9Imh0bWxfZmZiMzNkZDQxY2RiNDY1OTg1NGI1MzRiMGRhOTU4YmYiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjUuNjwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF8wZTJjMjY1ZGZlMGQ0MTZlYWQwN2YzZjA5YjMxMTVmYi5zZXRDb250ZW50KGh0bWxfZmZiMzNkZDQxY2RiNDY1OTg1NGI1MzRiMGRhOTU4YmYpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfYzJhYjQ0YTkxNWI2NDk3OGIzMjg4MzkyZDhlODY5MmMuYmluZFBvcHVwKHBvcHVwXzBlMmMyNjVkZmUwZDQxNmVhZDA3ZjNmMDliMzExNWZiKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lX2MyM2Q2YzhmN2M0MTQ2ZmJiOTU0MTljOGRhZmY1ZTliID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTY0MTQ5NSwgMjQuOTI2NDI2MV0sIFs2MC4xNjM1NDA5LCAyNC45MjQ3MTA4XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF84ZjlkMzg4YTNkNTM0M2NkYjk0ZTEyNTY1MDRkOGRlMiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfYzQwOGIyOTc5ZWYyNDU4OWE4MzlkZTk1ZDM4M2NjYzEgPSAkKGA8ZGl2IGlkPSJodG1sX2M0MDhiMjk3OWVmMjQ1ODlhODM5ZGU5NWQzODNjY2MxIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij45My4yPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzhmOWQzODhhM2Q1MzQzY2RiOTRlMTI1NjUwNGQ4ZGUyLnNldENvbnRlbnQoaHRtbF9jNDA4YjI5NzllZjI0NTg5YTgzOWRlOTVkMzgzY2NjMSk7CiAgICAgICAgCgogICAgICAgIHBvbHlfbGluZV9jMjNkNmM4ZjdjNDE0NmZiYjk1NDE5YzhkYWZmNWU5Yi5iaW5kUG9wdXAocG9wdXBfOGY5ZDM4OGEzZDUzNDNjZGI5NGUxMjU2NTA0ZDhkZTIpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfODBkNGUwNjYwM2M1NGI4MmI4YWEyZjc1NmNmMDJmM2EgPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgW1s2MC4xNjM1NDA5LCAyNC45MjQ3MTA4XSwgWzYwLjE2MzUwMjksIDI0LjkyNDYwNDhdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzNiODMwMTg2M2I4MzQyYzNhODc3ZDhjYWY5YjgzMzhjID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8zMTVmMmZmN2JhZGM0Zjg3YTI4MTQ3YWQ5ZWM2YzZjMCA9ICQoYDxkaXYgaWQ9Imh0bWxfMzE1ZjJmZjdiYWRjNGY4N2EyODE0N2FkOWVjNmM2YzAiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjUuODwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF8zYjgzMDE4NjNiODM0MmMzYTg3N2Q4Y2FmOWI4MzM4Yy5zZXRDb250ZW50KGh0bWxfMzE1ZjJmZjdiYWRjNGY4N2EyODE0N2FkOWVjNmM2YzApOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfODBkNGUwNjYwM2M1NGI4MmI4YWEyZjc1NmNmMDJmM2EuYmluZFBvcHVwKHBvcHVwXzNiODMwMTg2M2I4MzQyYzNhODc3ZDhjYWY5YjgzMzhjKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzc3MWU3YmQ3OWY4NzQwODVhMmRkNTk1N2I1MzBjZmVhID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTYzNTAyOSwgMjQuOTI0NjA0OF0sIFs2MC4xNjM0NzQzLCAyNC45MjQ1MjI1XV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiI2NjMDAwMCIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogZmFsc2UsICJmaWxsQ29sb3IiOiAiI2NjMDAwMCIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJub0NsaXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic21vb3RoRmFjdG9yIjogMS4wLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDV9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzg4MjZkZmI2ZjFhNTQyOGQ5ZmYyNmUzMTY5MTQwMTk1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF83ZTliZGExNGQyY2Q0YTUxYmQ3ZTY5NGE2YTE2M2ZiZiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfOTIyYTAxNTNlOTBkNDg3M2I0ZWI5MGRhNzY1ZTM4NjQgPSAkKGA8ZGl2IGlkPSJodG1sXzkyMmEwMTUzZTkwZDQ4NzNiNGViOTBkYTc2NWUzODY0IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij40LjQ8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfN2U5YmRhMTRkMmNkNGE1MWJkN2U2OTRhNmExNjNmYmYuc2V0Q29udGVudChodG1sXzkyMmEwMTUzZTkwZDQ4NzNiNGViOTBkYTc2NWUzODY0KTsKICAgICAgICAKCiAgICAgICAgcG9seV9saW5lXzc3MWU3YmQ3OWY4NzQwODVhMmRkNTk1N2I1MzBjZmVhLmJpbmRQb3B1cChwb3B1cF83ZTliZGExNGQyY2Q0YTUxYmQ3ZTY5NGE2YTE2M2ZiZikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIHBvbHlfbGluZV9kOGYxMWRkYmZkYzU0MzZhODJlZGFjY2U5ZGNiZmY3YiA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICBbWzYwLjE2MzQ3NDMsIDI0LjkyNDUyMjVdLCBbNjAuMTYzODEwMywgMjQuOTI0MDUxOF1dLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiNjYzAwMDAiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IGZhbHNlLCAiZmlsbENvbG9yIjogIiNjYzAwMDAiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAibm9DbGlwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiA1fQogICAgICAgICAgICApLmFkZFRvKG1hcF84ODI2ZGZiNmYxYTU0MjhkOWZmMjZlMzE2OTE0MDE5NSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfOTRkOGFkZWVkNzI2NDMwOTk5OGZjMDhlZjdlNWQyZGEgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzA3NGEyYTYyZGExZTRkODViNDE5Mjg3MTE5MDY2YmE1ID0gJChgPGRpdiBpZD0iaHRtbF8wNzRhMmE2MmRhMWU0ZDg1YjQxOTI4NzExOTA2NmJhNSIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+MzYuNDwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF85NGQ4YWRlZWQ3MjY0MzA5OTk4ZmMwOGVmN2U1ZDJkYS5zZXRDb250ZW50KGh0bWxfMDc0YTJhNjJkYTFlNGQ4NWI0MTkyODcxMTkwNjZiYTUpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfZDhmMTFkZGJmZGM1NDM2YTgyZWRhY2NlOWRjYmZmN2IuYmluZFBvcHVwKHBvcHVwXzk0ZDhhZGVlZDcyNjQzMDk5OThmYzA4ZWY3ZTVkMmRhKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzljOGMzZGU3NWZhYjQ4MzZiYjM1NDQ5ZGM1OGNlMGNjID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbNjAuMTYzODEwMywgMjQuOTI0MDUxOF0sIFs2MC4xNjM4MzUxLCAyNC45MjQwMTddXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjY2MwMDAwIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjY2MwMDAwIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzbW9vdGhGYWN0b3IiOiAxLjAsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogNX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzhmYmMyNmM4NDc0NzQ4ODg5ZmY3NjIxYzQ1OWZjMGNkID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8zZjEzNWM3MDg1NzA0Mjk2OGY5M2QxMjYyZWY3MzRlZCA9ICQoYDxkaXYgaWQ9Imh0bWxfM2YxMzVjNzA4NTcwNDI5NjhmOTNkMTI2MmVmNzM0ZWQiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPjIuNzwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF84ZmJjMjZjODQ3NDc0ODg4OWZmNzYyMWM0NTlmYzBjZC5zZXRDb250ZW50KGh0bWxfM2YxMzVjNzA4NTcwNDI5NjhmOTNkMTI2MmVmNzM0ZWQpOwogICAgICAgIAoKICAgICAgICBwb2x5X2xpbmVfOWM4YzNkZTc1ZmFiNDgzNmJiMzU0NDlkYzU4Y2UwY2MuYmluZFBvcHVwKHBvcHVwXzhmYmMyNmM4NDc0NzQ4ODg5ZmY3NjIxYzQ1OWZjMGNkKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICBtYXBfODgyNmRmYjZmMWE1NDI4ZDlmZjI2ZTMxNjkxNDAxOTUuZml0Qm91bmRzKAogICAgICAgICAgICAgICAgW1s2MC4xNjM0NzQzLCAyNC45MjQwMTddLCBbNjAuMTY2ODg2NywgMjQuOTM2ODA3XV0sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApOwogICAgICAgIAo8L3NjcmlwdD4= onload="this.contentDocument.open();this.contentDocument.write(atob(this.getAttribute('data-html')));this.contentDocument.close();" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+<div class="section" id="calculate-travel-times-from-one-to-many-locations">
+<h2>Calculate travel times from one to many locations<a class="headerlink" href="#calculate-travel-times-from-one-to-many-locations" title="Permalink to this headline">¶</a></h2>
+<p>When trying to understand the accessibility of a specific location, you
+typically want to look at travel times between multiple locations
+(one-to-many) or use isochrones (travel time contours).</p>
+<ul class="simple">
+<li><p>Let’s see how we can calculate travel times from the origin node, to
+all other nodes in our graph using NetworkX function
+<code class="docutils literal notranslate"><span class="pre">single_source_dijkstra_path_length()</span></code>:</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate walk travel times originating from one location</span>
+<span class="n">walk_times</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">single_source_dijkstra_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">orig_node_id</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;walk_t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What did we get?</span>
+<span class="n">walk_times</span>
+
+<span class="p">{</span><span class="mi">298372995</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="mi">310042886</span><span class="p">:</span> <span class="mf">4.3</span><span class="p">,</span>
+ <span class="mi">298372997</span><span class="p">:</span> <span class="mf">4.8</span><span class="p">,</span>
+ <span class="mi">1377211668</span><span class="p">:</span> <span class="mf">9.1</span><span class="p">,</span>
+ <span class="mi">298372992</span><span class="p">:</span> <span class="mf">10.1</span><span class="p">,</span>
+ <span class="mi">298372994</span><span class="p">:</span> <span class="mf">10.5</span><span class="p">,</span>
+ <span class="mi">298372999</span><span class="p">:</span> <span class="mf">14.6</span><span class="p">,</span>
+ <span class="mi">298373001</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span>
+ <span class="mi">298275980</span><span class="p">:</span> <span class="mf">20.4</span><span class="p">,</span>
+ <span class="mi">1008235033</span><span class="p">:</span> <span class="mf">58.6</span><span class="p">,</span>
+ <span class="mi">298275990</span><span class="p">:</span> <span class="mf">61.6</span><span class="p">,</span>
+ <span class="mi">298275993</span><span class="p">:</span> <span class="mf">63.1</span><span class="p">,</span>
+<span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As we can see, the result is a dictionary where we have the <strong>node_id</strong>
+as keys and the <strong>travel time</strong> as values.</p>
+<p>For visualizing this information, we need to join this data with the
+nodes. For doing this, we can first convert the result to DataFrame and
+then we can easily merge the information with the nodes GeoDataFrame.</p>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># Convert to DataFrame and add column names</span>
+<span class="n">walk_times_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="nb">list</span><span class="p">(</span><span class="n">walk_times</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">walk_times</span><span class="o">.</span><span class="n">values</span><span class="p">())])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">walk_times_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;node_id&#39;</span><span class="p">,</span> <span class="s1">&#39;walk_t&#39;</span><span class="p">]</span>
+
+<span class="c1"># What do we have now?</span>
+<span class="n">walk_times_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>node_id</th>
+      <th>walk_t</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.983730e+08</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.100429e+08</td>
+      <td>4.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.983730e+08</td>
+      <td>4.8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.377212e+09</td>
+      <td>9.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.983730e+08</td>
+      <td>10.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+<p>Great! Now we have the travel times <strong>from origin</strong> to all other nodes
+in the graph.</p>
+<ul class="simple">
+<li><p>Let’s finally merge the data with the nodes GeoDataFrame and
+visualize the results</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the nodes</span>
+<span class="n">nodes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>x</th>
+      <th>osmid</th>
+      <th>highway</th>
+      <th>ref</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3216400385</th>
+      <td>60.167552</td>
+      <td>24.934005</td>
+      <td>3216400385</td>
+      <td>turning_circle</td>
+      <td>NaN</td>
+      <td>POINT (24.93400 60.16755)</td>
+    </tr>
+    <tr>
+      <th>1372233731</th>
+      <td>60.162290</td>
+      <td>24.929274</td>
+      <td>1372233731</td>
+      <td>crossing</td>
+      <td>NaN</td>
+      <td>POINT (24.92927 60.16229)</td>
+    </tr>
+    <tr>
+      <th>1005744134</th>
+      <td>60.161622</td>
+      <td>24.924423</td>
+      <td>1005744134</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.92442 60.16162)</td>
+    </tr>
+    <tr>
+      <th>319885318</th>
+      <td>60.165062</td>
+      <td>24.925501</td>
+      <td>319885318</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.92550 60.16506)</td>
+    </tr>
+    <tr>
+      <th>3216400394</th>
+      <td>60.167662</td>
+      <td>24.933920</td>
+      <td>3216400394</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.93392 60.16766)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+<p>As we can see, the <code class="docutils literal notranslate"><span class="pre">node_id</span></code> in the nodes GeoDataFrame can be found
+from the <code class="docutils literal notranslate"><span class="pre">index</span></code> of the gdf as well as from the column <code class="docutils literal notranslate"><span class="pre">osmid</span></code>.</p>
+<ul class="simple">
+<li><p>Let’s merge these two datasets:</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge the datasets</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">walk_times_df</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;osmid&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;node_id&#39;</span><span class="p">)</span>
+
+<span class="c1"># Check</span>
+<span class="n">nodes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>x</th>
+      <th>osmid</th>
+      <th>highway</th>
+      <th>ref</th>
+      <th>geometry</th>
+      <th>node_id</th>
+      <th>walk_t</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>60.167552</td>
+      <td>24.934005</td>
+      <td>3216400385</td>
+      <td>turning_circle</td>
+      <td>NaN</td>
+      <td>POINT (24.93400 60.16755)</td>
+      <td>3.216400e+09</td>
+      <td>208.4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>60.162290</td>
+      <td>24.929274</td>
+      <td>1372233731</td>
+      <td>crossing</td>
+      <td>NaN</td>
+      <td>POINT (24.92927 60.16229)</td>
+      <td>1.372234e+09</td>
+      <td>639.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>60.161622</td>
+      <td>24.924423</td>
+      <td>1005744134</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.92442 60.16162)</td>
+      <td>1.005744e+09</td>
+      <td>775.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>60.165062</td>
+      <td>24.925501</td>
+      <td>319885318</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.92550 60.16506)</td>
+      <td>3.198853e+08</td>
+      <td>617.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>60.167662</td>
+      <td>24.933920</td>
+      <td>3216400394</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (24.93392 60.16766)</td>
+      <td>3.216400e+09</td>
+      <td>193.6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+<p>Okay, now we have also the travel times associated for each node.</p>
+<ul class="simple">
+<li><p>Let’s visualize this:</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1"># Make a GeoDataFrame for the origin point so that we can visualize it</span>
+<span class="n">orig</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s1">&#39;geometry&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="n">orig_x</span><span class="p">,</span> <span class="n">orig_y</span><span class="p">)]},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;init&#39;</span><span class="p">:</span> <span class="s1">&#39;epsg:4326&#39;</span><span class="p">})</span>
+
+<span class="c1"># Plot the results with edges and the origin point (green)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;walk_t&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlBu&#39;</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;natural_breaks&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">orig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="c1"># Adjust axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mf">24.92</span><span class="p">,</span> <span class="mf">24.945</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">60.160</span><span class="p">,</span> <span class="mf">60.170</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(60.16, 60.17)
+</pre></div>
+</div>
+<img alt="../_images/spatial_network_analysis_src_18_2.png" src="../_images/spatial_network_analysis_src_18_2.png" />
+</div>
+<p>Okay, as we can see now we have quickly calculated the travel times for
+each node in the graph using a single call.</p>
+<p>If you would have for example a predefined grid, you could find the
+nearest node for each grid centroid to produce a more matrix-like
+result.</p>
+<div class="section" id="alternative-approach-ego-graph">
+<h3>Alternative approach - Ego graph<a class="headerlink" href="#alternative-approach-ego-graph" title="Permalink to this headline">¶</a></h3>
+<p>Alternatively, it is possible to directly set a specific time limit and
+restrict <strong>how long the graph is travelled</strong> from the origin, and return
+that subgraph for the user.</p>
+<ul class="simple">
+<li><p>Let’s see an example:</p></li>
+</ul>
+<div class="jupyter_container docutils container">
+<div class="code_cell highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a subgraph until 4 minutes by walking (240 seconds)</span>
+<span class="n">subgraph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">orig_node_id</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="s1">&#39;walk_t&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph</span><span class="p">(</span><span class="n">subgraph</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/spatial_network_analysis_src_19_0.png" src="../_images/spatial_network_analysis_src_19_0.png" />
+</div>
+<p>As we can see, with this approach we can retrieve a partial graph that
+we could for example visualize with different colors, or e.g. subset the
+extent of our accessibility analysis to cover only specific range from
+the source.</p>
+<script src="https://hypothes.is/embed.js" async> </script></div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="spatial_interpolation.html" title="previous page">5. Spatial Interpolation</a>
+    <a class='right-next' id="next-link" href="spatial_regression.html" title="next page">7. Spatial Regression</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2020, Henrikki Tenkanen. Demonstration material for Aalto University.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
