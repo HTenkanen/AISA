@@ -21,6 +21,10 @@ social science, engineering, geography and many others.
     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQa8mUSXktDN0-PN22ohMps6oTxfLHLjly6ewhvcAAJm37dO9NNW8BHVy4oMe8sKIorNWOZJLM5dVf7/embed?start=false&loop=false&delayms=3000" frameborder="0" width="700" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 |
+
+Lesson objectives
+-----------------
+
 Today we will focus on **spatial networks** and learn different methods for analyzing
 spatial networks and conduct useful queries such as finding the shortest path along a street network.
 
@@ -62,10 +66,10 @@ spatial networks and conduct useful queries such as finding the shortest path al
 
 Before we dive deeper to spatial networks, **let's spend a moment with the following task**:
 
-.. admonition:: Discuss with your neighbor (3 minutes)
+.. admonition:: Task 1: Post your ideas to the chat!
    :name: important
 
-   **TASK 1:** Think practical examples where spatial network analysis algorithms are used in daily operations of the society?
+   Can you think of any practical examples where spatial network analysis algorithms are used in daily operations of the society?
 
     .. container:: toggle
 
@@ -106,10 +110,11 @@ Before we dive deeper to spatial networks, **let's spend a moment with the follo
 Tutorial
 --------
 
-Finding a shortest path using a specific street network is a common spatial analytics
-problem that has many practical every-day applications.
+In this tutorial we will focus on a network analysis methods that relate to way-finding.
+Finding a shortest path from A to B using a specific street network is a very common spatial analytics
+problem that has many practical applications.
 
-**How to do network analysis in practice? What tools to use?** Luckily, Python provides easy to use tools for conducting spatial network analysis.
+Python provides easy to use tools for conducting spatial network analysis.
 One of the easiest ways to start is to use a library
 called `Networkx <https://networkx.github.io/documentation/stable/>`__
 which is a Python module that provides a lot tools that can be used to
@@ -141,6 +146,8 @@ A simple graph could look like this:
 
 .. figure:: img/graph_elements.png
    :alt: A simple graph.
+   :width: 70%
+   :align: left
 
    A simple graph.
 
@@ -162,6 +169,8 @@ analyses this is not needed.
 
 .. figure:: img/graph_weights.png
    :alt: Graph with weights.
+   :width: 70%
+   :align: left
 
    Graph with weights.
 
@@ -181,6 +190,8 @@ direction you like.
 
 .. figure:: img/directed_graph.png
    :alt: Directed graph.
+   :width: 70%
+   :align: left
 
    Directed graph.
 
@@ -195,15 +206,15 @@ that for a bi-directional road, you should have edges in your data
 ======= ========= ======= ======================
 edge_id from_node to_node description
 ======= ========= ======= ======================
-1       D         E       *edge for direction 1*
-2       E         D       *edge for direction 2*
+1       A         C       *edge for direction 1*
+2       C         A       *edge for direction 2*
 ======= ========= ======= ======================
 
 .. admonition:: TASK 2 - Vote!
    :name: note
 
    The following routes are examples of paths with costs along the network. Which one is faster? Choose A or B.
-   (press **+** to open the questionnaire)
+   (press **+** to open the quiz)
 
 
     .. container:: toggle
@@ -212,7 +223,8 @@ edge_id from_node to_node description
 
             .. raw:: html
 
-               <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQa8mUSXktDN0-PN22ohMps6oTxfLHLjly6ewhvcAAJm37dO9NNW8BHVy4oMe8sKIorNWOZJLM5dVf7/embed?start=false&loop=false&delayms=3000" frameborder="0" width="550" height="350" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+               <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTy8ChevvieeNwA8z7JtTEpKpR6Lt_vl2g-lf3qBZQaYv-jRSE_KIrkZmGl7PVfg0Uz-ZEbfVZc0Rzt/embed?start=false&loop=false&delayms=3000" frameborder="0" width="550" height="350" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
 Next, we will continue, and see how to conduct shortest path analysis by walking/cycling using Python.
