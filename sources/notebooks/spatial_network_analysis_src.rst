@@ -9,8 +9,8 @@
 Introduction
 ------------
 
-**Networks are everywhere**. Social networks, telecommunication networks, neural networks (in our brains), and transportation networks
-are all very familiar examples how the networks surround us and are very essential to our everyday life. No surprise then,
+**Networks are everywhere**. Social networks, telecommunication networks, neural networks, and transportation networks
+are all familiar examples how the networks surround us and are very essential to our everyday life. No surprise then,
 that studying complex networks has grown to be a very important topic in various fields of science including biology, medical sciences,
 social science, engineering, geography and many others.
 

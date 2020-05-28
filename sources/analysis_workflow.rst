@@ -76,20 +76,20 @@ analysis process (see more details from the following sections). During the cour
 processing steps on each week.
 
 .. figure:: _static/analysis_workflow.png
-   :width: 70%
+   :width: 90%
    :align: left
 
    **Figure 1.** Typical spatial analysis workflow consist of various steps that start from defining the research question and (ideally)
    end with meaningful information about the topic that was analyzed. (adopted from :cite:`Toivonen2019`)
 
 Another useful and a bit more generic analytical framework is to think the methodological work as a
-sequence of 5 steps that is called as **PPDAC** :cite:`MacKay2000`:
+sequence of 5 steps that is called as **PPDAC** consisting of Problem, Plan, Data, Analysis, Conclusions :cite:`MacKay2000`:
 
 .. figure:: _static/ppdac.png
    :width: 70%
    :align: left
 
-   **Figure 2.**  A summary of a revised PPDAC approach as an iterative process: Although clockwise sequence (1→5) applies as
+   **Figure 2.**  A PPDAC approach as an iterative process: Although clockwise sequence (1→5) applies as
    the principal flow, each stage often feeds back to the previous stage. (Source: `de Smith et al. (2020) <https://www.spatialanalysisonline.com/HTML/index.html?analytical_methodologies.htm>`__ )
 
 
@@ -97,11 +97,46 @@ Step 1 - Defining the question/objectives
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All analytical work (and doing science in general) starts by **defining the research question** and/or **specifying the objectives**
-for the work. Typically this step starts by **getting an idea**. You most probably have gotten that "light bulb" 💡 moment, or been truly wondering
-some aspect of life or technology that you don't yet understand. With the initial idea, typically follows a rigorous search for information
-and discussing with others. In some cases, it turns out that no-one has yet answered to that question that you were wondering, or no-one has yet
-developed a solution for the problem (e.g. a technical one) that you are facing. If this is the case,
+for the work. Typically this step starts by **getting an idea** or having a **problem** that requires solving. You most probably have
+at least once gotten a "light bulb" 💡 moment, or been truly wondering some aspect of life or technology that you don't yet understand.
+With the initial idea, typically follows a rigorous search for information and discussing with others about the idea/problem.
+In some cases, it turns out that no-one has yet answered to your question, or developed a technical solution for the problem.
+If this is the case, then you start by **planning** how to proceed with the problem at hand.
 
+Step 2 - Data acquisition
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nothing here. Placeholder for demo purposes.
+
+Step 3 - Data storage
+~~~~~~~~~~~~~~~~~~~~~
+
+Nothing here. Placeholder for demo purposes.
+
+Step 4 - Data cleaning
+~~~~~~~~~~~~~~~~~~~~~~
+
+Nothing here. Placeholder for demo purposes.
+
+Step 5 - Analysis
+~~~~~~~~~~~~~~~~~
+
+Nothing here. Placeholder for demo purposes.
+
+Step 6 - Visualization
+~~~~~~~~~~~~~~~~~~~~~~
+
+Nothing here. Placeholder for demo purposes.
+
+Step 7 - Critical Assessment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nothing here. Placeholder for demo purposes.
+
+Step 8 - Outcome: Meaningful knowledge
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nothing here. Placeholder for demo purposes.
 
 Definitions: What is spatial analysis, really?
 ----------------------------------------------
