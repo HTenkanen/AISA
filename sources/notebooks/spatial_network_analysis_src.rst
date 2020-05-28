@@ -139,7 +139,7 @@ of:
 
 A simple graph could look like this:
 
-.. figure:: img/graph_basics.jpg
+.. figure:: img/graph_elements.png
    :alt: A simple graph.
 
    A simple graph.
@@ -160,7 +160,10 @@ geographical information to edges (if you e.g. want to show how the
 roads are curved between intersections), but for basic travel time
 analyses this is not needed.
 
-ADD IMAGE OF GRAPH WITH COSTS.
+.. figure:: img/graph_weights.png
+   :alt: Graph with weights.
+
+   Graph with weights.
 
 Directed vs Undirected graphs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -171,12 +174,15 @@ travel direction is restricted to certain direction (e.g. a
 one-way-street).
 
 In **undirected** graph, it is possible to travel in both directions
-between nodes (e.g. from ``A --> B`` and from ``B --> A``). Undirected
+between nodes (e.g. from ``A --> C`` and from ``C --> A``). Undirected
 graphs are typically used e.g. with walking and cycling as with those
 travel modes it is typically possible to travel the same street in any
 direction you like.
 
-ADD IMAGE OF DIRECTED GRAPH.
+.. figure:: img/directed_graph.png
+   :alt: Directed graph.
+
+   Directed graph.
 
 If the graph is **directed**, it means that you should have a separate
 edge for each direction. If you for example have a graph with only an
