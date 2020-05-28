@@ -111,6 +111,7 @@ Course online tools
    notebooks/spatial_interpolation
    notebooks/spatial_network_analysis_src
    notebooks/spatial_regression
+   notebooks/big_data_spatial_analytics
 
 
 .. raw:: html
