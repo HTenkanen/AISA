@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Introduction to Spatial Analytics &#8212; Introduction to Spatial Analytics  documentation</title>
+    <title>1. Introduction to Spatial Analytics &#8212; Introduction to Spatial Analytics  documentation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script >var togglebuttonSelector = '.toggle';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Spatial data aquisition, cleaning, filtering and classification" href="notebooks/data_aquisition.html" />
+    <link rel="next" title="2. Spatial data aquisition, cleaning, filtering and classification" href="notebooks/data_aquisition.html" />
     <link rel="prev" title="Course information" href="course_information.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -62,35 +62,35 @@
         </li>
         
         <li class="nav-item active">
-            <a class="nav-link" href="">Introduction to Spatial Analytics</a>
+            <a class="nav-link" href="">1. Introduction to Spatial Analytics</a>
         </li>
         
         <li class="nav-item ">
-            <a class="nav-link" href="notebooks/data_aquisition.html">Spatial data aquisition, cleaning, filtering and classification</a>
+            <a class="nav-link" href="notebooks/data_aquisition.html">2. Spatial data aquisition, cleaning, filtering and classification</a>
         </li>
         
         <li class="nav-item ">
-            <a class="nav-link" href="notebooks/point_pattern_analysis.html">Point pattern analysis</a>
+            <a class="nav-link" href="notebooks/point_pattern_analysis.html">3. Point pattern analysis and clustering</a>
         </li>
         
         <li class="nav-item ">
-            <a class="nav-link" href="notebooks/clustering.html">Clustering</a>
+            <a class="nav-link" href="notebooks/spatial_autocorrelation.html">4. Spatial autocorrelation and LISA</a>
         </li>
         
         <li class="nav-item ">
-            <a class="nav-link" href="notebooks/spatial_autocorrelation.html">Spatial autocorrelation</a>
+            <a class="nav-link" href="notebooks/spatial_interpolation.html">5. Spatial Interpolation</a>
         </li>
         
         <li class="nav-item ">
-            <a class="nav-link" href="notebooks/spatial_interpolation.html">Spatial Interpolation</a>
+            <a class="nav-link" href="notebooks/spatial_network_analysis_src.html">6. Spatial Network analysis</a>
         </li>
         
         <li class="nav-item ">
-            <a class="nav-link" href="notebooks/spatial_network_analysis.html">Spatial Network analysis</a>
+            <a class="nav-link" href="notebooks/spatial_regression.html">7. Spatial Regression</a>
         </li>
         
         <li class="nav-item ">
-            <a class="nav-link" href="notebooks/spatial_regression.html">Spatial Regression</a>
+            <a class="nav-link" href="notebooks/big_data_spatial_analytics.html">8. Applying spatial analytics in the Era of Big Data</a>
         </li>
         
     </ul>
@@ -110,11 +110,7 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#learning-goals" class="nav-link">Learning goals</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#resources" class="nav-link">Resources</a>
+            <a href="#what-is-special-about-spatial" class="nav-link">What is special about spatial?</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -125,6 +121,22 @@
         </li>
     
             </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#definitions-what-is-spatial-analysis-really" class="nav-link">Definitions: What is spatial analysis, really?</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#application-areas-for-spatial-analysis" class="nav-link">Application areas for spatial analysis</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contemporary-challenges-in-spatial-data-science" class="nav-link">Contemporary challenges in spatial data science</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#references" class="nav-link">References</a>
         </li>
     
     </ul>
@@ -141,40 +153,90 @@
               <div>
                 
   <div class="section" id="introduction-to-spatial-analytics">
-<h1>Introduction to Spatial Analytics<a class="headerlink" href="#introduction-to-spatial-analytics" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
-<p>After this week’s tutorial, you should be able to describe:</p>
+<h1>1. Introduction to Spatial Analytics<a class="headerlink" href="#introduction-to-spatial-analytics" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-learning-goals-for-this-lesson alert alert-info" id="hint">
+<p class="admonition-title">Learning goals for this lesson</p>
+<div class="toggle docutils container">
+<p>After this week’s tutorial, you should be able to understand:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>What are the typical analytical steps when doing spatial analytics?</p></li>
-<li><p>What kind of analytical methods are available for working with spatial data?</p></li>
-<li><p>Why it is important to document your workflow continuously when doing analyses?</p></li>
-<li><p>What tools are available to make reproducible science and how to use them?</p></li>
+<li><p>What is special about spatial?</p></li>
+<li><p>What is the typical process workflow for doing spatial analysis?</p></li>
+<li><dl class="simple">
+<dt>Key definitions and their differences/similarities:</dt><dd><ul>
+<li><p>spatial analysis; GIS; geocomputation; GIScience; geographic data science; quantitative geography, ..</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>What are typical application areas for spatial analytics?</p></li>
+<li><p>What kind of contemporary spatial data science challenges exist?</p></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="admonition-resources alert alert-info">
+<p class="admonition-title">Resources</p>
+<p>This week’s literature and video material that you can go though on your own time.</p>
+<div class="toggle docutils container">
+<p><strong>Literature:</strong></p>
+<blockquote>
+<div><ul>
+<li><ol class="upperalpha simple" start="13">
+<li><p>de Smith, M. Goodchild, P. Longley (2020) - Geospatial Analysis (free online book):</p></li>
+</ol>
 <blockquote>
 <div><ul class="simple">
-<li><p>literature</p></li>
-<li><p>video</p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=osAbJeTho5w">What is spatial data science (CARTO)</a></p></li>
-<li><p>Luc Anselin - <a class="reference external" href="https://www.youtube.com/watch?v=lawWM6jQYEE">Spatial Data Science overview</a></p></li>
+<li><p><a class="reference external" href="https://www.spatialanalysisonline.com/HTML/index.html?analytical_methodologies.htm">Chapter 3.1 - Analytical methodologies</a></p></li>
+<li><p><a class="reference external" href="https://www.spatialanalysisonline.com/HTML/index.html?spatial_analysis_as_a_process.htm">Chapter 3.2 - Spatial analysis as a process</a></p></li>
+<li><p><a class="reference external" href="https://www.spatialanalysisonline.com/HTML/index.html?spatial_analysis_and_the_ppdac.htm">Chapter 3.3 - Spatial analysis and the PPDAC model</a></p></li>
 </ul>
 </div></blockquote>
+</li>
+<li><p>Singleton, A. &amp; D. Arribas-Bel (2019) - <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/gean.12194">Geographic Data Science</a> <a class="bibtex reference internal" href="#singleton2019" id="id1">[2]</a></p></li>
+<li><p>Wolf L.J. et al. (2020) - <a class="reference external" href="https://journals.sagepub.com/doi/10.1177/0309132520924722">Quantitative geography III: Future challenges and challenging futures.</a> <a class="bibtex reference internal" href="#wolf2020" id="id2">[5]</a></p></li>
+</ul>
+</div></blockquote>
+<p><strong>Videos:</strong></p>
+<p>Spatial Data Science overview by Luc Anselin (2016):</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lawWM6jQYEE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>What is spatial data science? (by CARTO):</p>
+<blockquote>
+<div><iframe width="560" height="315" src="https://www.youtube.com/embed/osAbJeTho5w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></blockquote>
+</div>
+</div>
+<div class="section" id="what-is-special-about-spatial">
+<h2>What is special about spatial?<a class="headerlink" href="#what-is-special-about-spatial" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="sidebar-title">The first law of geography</p>
+<p>“everything is related to everything else, but near things are more related than distant things”</p>
+<p>– Waldo Tobler (1970) <a class="bibtex reference internal" href="#tobler1970" id="id3">[3]</a></p>
+</div>
+<p>The question above is a classical discussion topic among spatial scientist and geographers, especially when
+we are discussing with someone who comes outside of our domain (i.e. <em>great majority of the people</em>). For us, knowing why
+geography matters is a rather obvious thing (as Waldo Tobler famously put it around 50 years ago),
+but it is also good to remind us in a bit broader terms, what is it that make this field of ours special.
+The following presentation gives you a brief introduction to the topic:</p>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS2xp3ydyopyxZOrCV336mnYWuIkE3wz2eEbXv5vH_O8ECBw0-pIpMQfpw8aegHHfllcbIbRF0xOe4j/embed?start=false&loop=false&delayms=3000" frameborder="0" width="700" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="section" id="analytical-workflow">
 <h2>Analytical workflow<a class="headerlink" href="#analytical-workflow" title="Permalink to this headline">¶</a></h2>
 <p>Before diving into the world of spatial analytics, let’s start by taking a look at the typical workflow that applies to
-spatial data science (as well as to any kind of science, really). Figure 1 represents a typical workflow for doing spatial
-analysis. During the course, these steps will become extremely familiar to you, as we are going to repeat the same basic
+spatial data science (as well as to any kind of science, really). Figure 1 represents an overview of the typical workflow for spatial
+analysis process (see more details from the following sections). During the course, these steps will become extremely familiar to you, as we are going to repeat the same
 processing steps on each week.</p>
-<div class="figure align-left" id="id2">
+<div class="figure align-left" id="id6">
 <a class="reference internal image-reference" href="_images/analysis_workflow.png"><img alt="_images/analysis_workflow.png" src="_images/analysis_workflow.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-text"><strong>Figure 1.</strong> Typical spatial analysis workflow consist of various steps that start from defining the research question and (ideally)
-end with meaningful information about the topic that was analyzed. (adopted from <a class="bibtex reference internal" href="#toivonen2019" id="id1">[1]</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+end with meaningful information about the topic that was analyzed. (adopted from <a class="bibtex reference internal" href="#toivonen2019" id="id4">[4]</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>Another useful and a bit more generic analytical framework is to think the methodological work as a
+sequence of 5 steps that is called as <strong>PPDAC</strong> <a class="bibtex reference internal" href="#mackay2000" id="id5">[1]</a>:</p>
+<div class="figure align-left" id="id7">
+<a class="reference internal image-reference" href="_images/ppdac.png"><img alt="_images/ppdac.png" src="_images/ppdac.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 2.</strong>  A summary of a revised PPDAC approach as an iterative process: Although clockwise sequence (1→5) applies as
+the principal flow, each stage often feeds back to the previous stage. (Source: <a class="reference external" href="https://www.spatialanalysisonline.com/HTML/index.html?analytical_methodologies.htm">de Smith et al. (2020)</a> )</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="step-1-defining-the-question-objectives">
 <h3>Step 1 - Defining the question/objectives<a class="headerlink" href="#step-1-defining-the-question-objectives" title="Permalink to this headline">¶</a></h3>
@@ -183,15 +245,79 @@ for the work. Typically this step starts by <strong>getting an idea</strong>. Yo
 some aspect of life or technology that you don’t yet understand. With the initial idea, typically follows a rigorous search for information
 and discussing with others. In some cases, it turns out that no-one has yet answered to that question that you were wondering, or no-one has yet
 developed a solution for the problem (e.g. a technical one) that you are facing. If this is the case,</p>
+</div>
+</div>
+<div class="section" id="definitions-what-is-spatial-analysis-really">
+<h2>Definitions: What is spatial analysis, really?<a class="headerlink" href="#definitions-what-is-spatial-analysis-really" title="Permalink to this headline">¶</a></h2>
+<p><em>“A belowed child has many names”</em> …</p>
+<div class="alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>No contents here (this is just a demo). This part would introduce the students what is meant by:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>spatial analytics</p></li>
+<li><p>GIS</p></li>
+<li><p>geocomputation</p></li>
+<li><p>GIScience / spatial data science / geographic data science</p></li>
+<li><p>geoinformatics / geoinformation technology</p></li>
+<li><p>quantitative geography</p></li>
+</ul>
+</div></blockquote>
+<p>Focus is to understand some of the historical reasons, debates and reasoning why all of these different domains
+have emerged and how they differ from each other.</p>
+</div>
+</div>
+<div class="section" id="application-areas-for-spatial-analysis">
+<h2>Application areas for spatial analysis<a class="headerlink" href="#application-areas-for-spatial-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>No contents here (this is just a demo). This part would introduce the students what kind of application areas
+and spatial analysis methods there exists.</p>
+</div>
+</div>
+<div class="section" id="contemporary-challenges-in-spatial-data-science">
+<h2>Contemporary challenges in spatial data science<a class="headerlink" href="#contemporary-challenges-in-spatial-data-science" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>No contents here (this is just a demo). This part would introduce the students what kind of contemporary challenges exist
+for spatial data science, such as:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>how to handle ever growing and massive spatial datasets (big geodata)</p></li>
+<li><p>how to handle sensitive spatial data in such a manner that it does not violate privacy (e.g. movement data, geosocial data etc.)</p></li>
+<li><p>how to utilize modern machine learning frameworks (such as neural nets) with spatial data to make e.g. more accurate models and predictions</p></li>
+<li><ul>
+<li><p>classical issues:
+- how to deal with uncertainty in spatial data
+- how to democratize spatial analysis (e.g. with online spatial analysis platforms)</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="bibtex-bibliography-analysis_workflow-0"><dl class="citation">
-<dt class="bibtex label" id="toivonen2019"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="bibtex label" id="mackay2000"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
+<dd><p>R. J. MacKay and R. W. Oldford. Scientific Method, Statistical Method and the Speed of Light. <em>Statistical Science</em>, 15(3):254–278, aug 2000. <a class="reference external" href="https://doi.org/10.1214/SS/1009212817">doi:10.1214/SS/1009212817</a>.</p>
+</dd>
+<dt class="bibtex label" id="singleton2019"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dd><p>Alex Singleton and Daniel Arribas‐Bel. Geographic Data Science. <em>Geographical Analysis</em>, pages gean.12194, apr 2019. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/gean.12194">https://onlinelibrary.wiley.com/doi/abs/10.1111/gean.12194</a>, <a class="reference external" href="https://doi.org/10.1111/gean.12194">doi:10.1111/gean.12194</a>.</p>
+</dd>
+<dt class="bibtex label" id="tobler1970"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Waldo R. Tobler. A Computer Movie Simulating Urban Growth in the Detroit Region. <em>Economic Geography</em>, 46:234–240, 1970. URL: <a class="reference external" href="http://www.jstor.org/stable/143141?origin=JSTOR-pdf">http://www.jstor.org/stable/143141?origin=JSTOR-pdf</a>.</p>
+</dd>
+<dt class="bibtex label" id="toivonen2019"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Tuuli Toivonen, Vuokko Heikinheimo, Christoph Fink, Anna Hausmann, Tuomo Hiippala, Olle Järv, Henrikki Tenkanen, and Enrico Di Minin. Social media data for conservation science: A methodological overview. <em>Biological Conservation</em>, 233:298–315, may 2019. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0006320718317609">https://www.sciencedirect.com/science/article/pii/S0006320718317609</a>, <a class="reference external" href="https://doi.org/10.1016/J.BIOCON.2019.01.023">doi:10.1016/J.BIOCON.2019.01.023</a>.</p>
+</dd>
+<dt class="bibtex label" id="wolf2020"><span class="brackets"><a class="fn-backref" href="#id2">5</a></span></dt>
+<dd><p>Levi John Wolf, Sean Fox, Rich Harris, Ron Johnston, Kelvyn Jones, David Manley, Emmanouil Tranos, and Wenfei Winnie Wang. Quantitative geography III: Future challenges and challenging futures. <em>Progress in Human Geography</em>, pages 1–13, 2020. <a class="reference external" href="https://doi.org/10.1177/0309132520924722">doi:10.1177/0309132520924722</a>.</p>
 </dd>
 </dl>
 </p>
 <script src="https://hypothes.is/embed.js" async></script><div class="line-block">
 <div class="line"><br /></div>
-</div>
 </div>
 </div>
 </div>
@@ -203,7 +329,7 @@ developed a solution for the problem (e.g. a technical one) that you are facing.
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="course_information.html" title="previous page">Course information</a>
-    <a class='right-next' id="next-link" href="notebooks/data_aquisition.html" title="next page">Spatial data aquisition, cleaning, filtering and classification</a>
+    <a class='right-next' id="next-link" href="notebooks/data_aquisition.html" title="next page">2. Spatial data aquisition, cleaning, filtering and classification</a>
 
               </div>
               

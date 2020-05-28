@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>4. Spatial autocorrelation and LISA &#8212; Introduction to Spatial Analytics  documentation</title>
+    <title>8. Applying spatial analytics in the Era of Big Data &#8212; Introduction to Spatial Analytics  documentation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
@@ -24,8 +24,7 @@
     <script >var togglebuttonSelector = '.toggle';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Spatial Interpolation" href="spatial_interpolation.html" />
-    <link rel="prev" title="3. Point pattern analysis and clustering" href="point_pattern_analysis.html" />
+    <link rel="prev" title="7. Spatial Regression" href="spatial_regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
   </head>
@@ -73,8 +72,8 @@
             <a class="nav-link" href="point_pattern_analysis.html">3. Point pattern analysis and clustering</a>
         </li>
         
-        <li class="nav-item active">
-            <a class="nav-link" href="">4. Spatial autocorrelation and LISA</a>
+        <li class="nav-item ">
+            <a class="nav-link" href="spatial_autocorrelation.html">4. Spatial autocorrelation and LISA</a>
         </li>
         
         <li class="nav-item ">
@@ -89,8 +88,8 @@
             <a class="nav-link" href="spatial_regression.html">7. Spatial Regression</a>
         </li>
         
-        <li class="nav-item ">
-            <a class="nav-link" href="big_data_spatial_analytics.html">8. Applying spatial analytics in the Era of Big Data</a>
+        <li class="nav-item active">
+            <a class="nav-link" href="">8. Applying spatial analytics in the Era of Big Data</a>
         </li>
         
     </ul>
@@ -119,11 +118,25 @@
               
               <div>
                 
-  <div class="section" id="spatial-autocorrelation-and-lisa">
-<h1>4. Spatial autocorrelation and LISA<a class="headerlink" href="#spatial-autocorrelation-and-lisa" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="applying-spatial-analytics-in-the-era-of-big-data">
+<h1>8. Applying spatial analytics in the Era of Big Data<a class="headerlink" href="#applying-spatial-analytics-in-the-era-of-big-data" title="Permalink to this headline">¶</a></h1>
+<p>Most of the methods in spatial data science were developed in a time when the data volumes were much smaller.
+In today’s world it is quite typical to have very large datasets (e.g. billions of points) which bring challenges to store,
+process and analyze such data. For example conducting clustering with billion points using K-Means++ algorithm takes ages,
+hence, conducting such clustering task have required developing a whole new approach that allows parallelizing the clustering process
+using a dedicated <cite>K-Means||</cite> algorithm (“Scalable K-Means”, Bahmani et al. 2012).</p>
 <div class="alert alert-warning">
 <p class="admonition-title">Warning</p>
 <p>Nothing here. This is just a placeholder for demo purposes.</p>
+<p>Would include information about:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>parallel computing (take everything out of your computer)</p></li>
+<li><p>distributed computing on a cluster</p></li>
+<li><p>how to measure the performance of your code</p></li>
+<li><p>common pitfalls that slows down your analytical processes</p></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
@@ -133,8 +146,7 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="point_pattern_analysis.html" title="previous page">3. Point pattern analysis and clustering</a>
-    <a class='right-next' id="next-link" href="spatial_interpolation.html" title="next page">5. Spatial Interpolation</a>
+    <a class='left-prev' id="prev-link" href="spatial_regression.html" title="previous page">7. Spatial Regression</a>
 
               </div>
               

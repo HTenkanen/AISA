@@ -1,7 +1,9 @@
-Point pattern analysis
-======================
+3. Point pattern analysis and clustering
+========================================
 
-Nothing here. This is just a placeholder for demo purposes.
+.. warning::
+
+    Nothing here. This is just a placeholder for demo purposes.
 
 
 .. raw:: html

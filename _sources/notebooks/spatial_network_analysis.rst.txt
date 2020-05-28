@@ -1,106 +1,18 @@
-Spatial Network analysis
-========================
+6. Spatial Network analysis
+===========================
 
-.. image:: https://img.shields.io/badge/Interact-Run%20the%20codes%20in%20browser-orange.svg
+.. image:: https://mybinder.org/badge_logo.svg
     :target: https://mybinder.org/v2/gh/HTenkanen/AISA/master?urlpath=lab/tree/sources/notebooks/spatial_network_analysis.ipynb
 
-|
-**Networks are everywhere**. Social networks, telecommunication networks, neural networks (in our brains), and transportation networks
-are all very familiar examples how the networks surround us and are very essential to our everyday life. No surprise then,
-that studying complex networks has grown to be a very important topic in various fields of science including biology, medical sciences,
-social science, engineering, geography and many others.
 
-*Examples of different kind of networks:*
+Finding a shortest path using a specific street network is a common GIS
+problem that has many practical applications. For example navigators are
+one of those “every-day” applications where **routing** using specific
+algorithms is used to find the optimal route between two (or multiple)
+points.
 
-.. raw:: html
-
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQa8mUSXktDN0-PN22ohMps6oTxfLHLjly6ewhvcAAJm37dO9NNW8BHVy4oMe8sKIorNWOZJLM5dVf7/embed?start=false&loop=false&delayms=3000" frameborder="0" width="700" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-
-|
-Today we will focus on **spatial networks** and learn different methods for analyzing
-spatial networks and conduct useful queries such as finding the shortest path along a street network.
-
-.. admonition:: Learning goals
-   :name: hint
-
-   .. container:: toggle
-
-        After this tutorial, you should be able to:
-
-         - Understand which are typical application areas where spatial network analysis is used?
-         - Know the basic elements of a graph
-         - Understand the difference between directed and undirected graph
-         - Be able to solve a simple shortest path calculation (on paper without any tools)
-         - Be able to use Python tools (NetworkX + OSMnx) to make a simple way-finding application
-
-.. admonition:: Additional materials
-   :name: hint
-
-   .. container:: toggle
-
-        **Literature**
-
-         - De Smith, Goodchild, Longley et al. (2020). Geospatial Analysis - `Chapter 7: Network and Location Analysis <https://www.spatialanalysisonline.com/HTML/index.html?network_and_location_analysis.htm>`__
-
-        **Videos**
-
-        .. raw:: html
-
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZHr0Ch6KRSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-Tutorial
---------
-
-Finding a shortest path using a specific street network is a common spatial analytics
-problem that has many practical every-day applications.
-
-Before we dive deeper to spatial networks, **let's spend a moment with the following task**:
-
-.. admonition:: Discuss with your neighbor (3 minutes)
-   :name: important
-
-   **TASK 1:** Think practical examples where spatial network analysis algorithms are used in daily operations of the society?
-
-    .. container:: toggle
-
-        .. admonition:: 1. Navigation
-
-            Show me the best route from A to B:
-
-                - Car navigation
-                - Journey planning (public transport)
-                - Emergency way-finding etc.
-
-            .. figure:: img/navigator.gif
-
-                *Source: Sygic Ltd* (`2020 <https://www.sygic.com/blog/2017/introducing-new-gps-navigation-feature-real-view-navigation>`__)
-
-
-        .. admonition:: 2. Spatial planning
-
-              - Where should we locate a new service?
-              - Where traffic congestion is most likely going to worsen in the future? (simulations)
-              - How many people can reach this location within X minutes?
-
-            .. figure:: img/travel_time_isochrones.gif
-
-                *How fast do you reach different parts of the city by different travel modes? (pink: private car, yellow: bicycle, green: public transport) Source: Topi Tjukanov* (`2018 <https://tjukanov.org/accessibility-fireworks>`__)
-
-        .. admonition:: 3. Spatial economics
-
-                - Forecasting economic developments in the area
-                - How many more customers/revenue this shop is going to get when the new metro-line opens?
-                - Spatial interaction models (e.g. gravity models such as Huff's)
-
-            .. figure:: img/Huffs_model.jpg
-
-                 *Source Ela Dramowicz* (`2015 <https://www.directionsmag.com/article/3207>`__)
-
-
-
-**How to do network analysis in practice? What tools to use?** Luckily, Python provides easy to use tools for conducting spatial network analysis.
-One of the easiest ways to start is to use a library
+It is also possible to perform network analysis such as tranposrtation
+routing in Python. One of the easiest ways to start is to use a library
 called `Networkx <https://networkx.github.io/documentation/stable/>`__
 which is a Python module that provides a lot tools that can be used to
 analyze networks on various different ways. It also contains algorithms
@@ -111,7 +23,21 @@ or
 algoritm that are commonly used to find shortest paths along
 transportation network.
 
-Next, we will learn how to do spatial network analysis in practice.
+Typical workflow for routing
+----------------------------
+
+If you want to conduct network analysis (in any programming language)
+there are a few basic steps that needs to be done before you can start
+routing. These steps are:
+
+1. **Retrieve data** (such as street network from OSM or Digiroad +
+   possibly transit data if routing with PT).
+2. (Possibly modify the network by applying custom edge weights
+   considering e.g. traffic conditions for car).
+3. **Build a routable graph** for the routing tool that you are using
+   (e.g. NetworkX, Igraph or OpenTripPlanner).
+4. **Conduct network analysis** (such as shortest path analysis) with
+   the routing tool of your choice.
 
 What is a graph?
 ----------------
@@ -179,39 +105,8 @@ edge_id from_node to_node description
 2       E         D       *edge for direction 2*
 ======= ========= ======= ======================
 
-.. admonition:: Discuss/solve together with your neighbor (max. 10 minutes)
-   :name: note
-
-   **TASK 2:** What is the shortest path from node **A** to **F** using the following graph?:
-
-    ADD IMAGE HERE.
-
-    .. container:: toggle
-
-        .. admonition:: Correct answer
-
-            ADD CORRECT ANSWER HERE.
-
-Next, we will continue, and see how to conduct shortest path analysis by walking/cycling using Python.
-
-Typical workflow for routing
-----------------------------
-
-If you want to conduct network analysis (in any programming language)
-there are a few basic steps that needs to be done before you can start
-routing (**remember the workflow that we learned during the first lesson**).
-
-These steps are:
-
-1. **Retrieve data** (such as street network from OSM or Digiroad +
-   possibly transit data if routing with PT).
-2. (Possibly modify the network by applying custom edge weights
-   considering e.g. traffic conditions for car).
-3. **Build a routable graph** for the routing tool that you are using
-   (e.g. NetworkX, Igraph or OpenTripPlanner).
-4. **Conduct network analysis** (such as shortest path analysis) with
-   the routing tool of your choice.
-5. **Visualize the results** (e.g. the shortest paths on the map, or isochrones)
+Next, we will see how to conduct these steps by walking/cycling which is
+the most straightforward case.
 
 Network analysis by walking / cycling
 -------------------------------------
@@ -648,5 +543,4 @@ the source.
 
 
 .. raw:: html
-
     <script src="https://hypothes.is/embed.js" async> </script>

@@ -1,7 +1,9 @@
 Clustering
 ==========
 
-Nothing here. This is just a placeholder for demo purposes.
+.. warning::
+
+    Nothing here. This is just a placeholder for demo purposes.
 
 
 .. raw:: html

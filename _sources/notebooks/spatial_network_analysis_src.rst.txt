@@ -1,5 +1,5 @@
-Spatial Network analysis
-========================
+6. Spatial Network analysis
+===========================
 
 .. image:: https://img.shields.io/badge/Interact-Run%20the%20codes%20in%20browser-orange.svg
     :target: https://mybinder.org/v2/gh/HTenkanen/AISA/master?urlpath=lab/tree/sources/notebooks/spatial_network_analysis.ipynb
@@ -160,6 +160,8 @@ geographical information to edges (if you e.g. want to show how the
 roads are curved between intersections), but for basic travel time
 analyses this is not needed.
 
+ADD IMAGE OF GRAPH WITH COSTS.
+
 Directed vs Undirected graphs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -173,6 +175,8 @@ between nodes (e.g. from ``A --> B`` and from ``B --> A``). Undirected
 graphs are typically used e.g. with walking and cycling as with those
 travel modes it is typically possible to travel the same street in any
 direction you like.
+
+ADD IMAGE OF DIRECTED GRAPH.
 
 If the graph is **directed**, it means that you should have a separate
 edge for each direction. If you for example have a graph with only an
@@ -189,18 +193,21 @@ edge_id from_node to_node description
 2       E         D       *edge for direction 2*
 ======= ========= ======= ======================
 
-.. admonition:: Discuss/solve together with your neighbor (max. 10 minutes)
+.. admonition:: TASK 2 - Vote!
    :name: note
 
-   **TASK 2:** What is the shortest path from node **A** to **F** using the following graph?:
+   The following routes are examples of paths with costs along the network. Which one is faster? Choose A or B.
+   (press **+** to open the questionnaire)
 
-    ADD IMAGE HERE.
 
     .. container:: toggle
 
-        .. admonition:: Correct answer
+        .. admonition:: Questions (open in full screen if difficult to see)
 
-            ADD CORRECT ANSWER HERE.
+            .. raw:: html
+
+               <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQa8mUSXktDN0-PN22ohMps6oTxfLHLjly6ewhvcAAJm37dO9NNW8BHVy4oMe8sKIorNWOZJLM5dVf7/embed?start=false&loop=false&delayms=3000" frameborder="0" width="550" height="350" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 
 Next, we will continue, and see how to conduct shortest path analysis by walking/cycling using Python.
 

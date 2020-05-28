@@ -1,9 +1,16 @@
-Introduction to Spatial Analytics
-=================================
+.. image:: _static/aisa_banner.png
+
+|
 
 Welcome to **Introduction to Spatial Analytics** -course that provides the theories, tools, and methods that
-an engineer and modern data scientist needs to meet the challenges of contemporary data science applied to
+an engineer and a modern spatial data scientist needs to meet the challenges of contemporary data science applied to
 geographic problems and data.
+
+
+Learning goals
+--------------
+
+After this course, you should have basic knowledge and skills to apply spatial analysis
 
 Prerequisites
 -------------
@@ -43,6 +50,9 @@ after which they are publicly available for anyone interested:
       - Spatial network analysis
     * - 7
       - Spatial regression
+    * - 8
+      - Applying spatial analytics in the Era of Big Data
+
 
 Course online tools
 -------------------
@@ -89,10 +99,6 @@ Course online tools
     :scale: 40 %
 
 
-Contents
---------
-
-
 .. toctree::
    :maxdepth: 2
    :hidden:
@@ -101,11 +107,11 @@ Contents
    analysis_workflow
    notebooks/data_aquisition
    notebooks/point_pattern_analysis
-   notebooks/clustering
    notebooks/spatial_autocorrelation
    notebooks/spatial_interpolation
-   notebooks/spatial_network_analysis
+   notebooks/spatial_network_analysis_src
    notebooks/spatial_regression
+   notebooks/big_data_spatial_analytics
 
 
 .. raw:: html

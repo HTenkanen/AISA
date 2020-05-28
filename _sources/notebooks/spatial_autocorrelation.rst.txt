@@ -1,7 +1,9 @@
-Spatial autocorrelation
-=======================
+4. Spatial autocorrelation and LISA
+===================================
 
-Nothing here. This is just a placeholder for demo purposes.
+.. warning::
+
+    Nothing here. This is just a placeholder for demo purposes.
 
 
 .. raw:: html
