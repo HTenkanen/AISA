@@ -2,7 +2,7 @@
 
 |
 
-Welcome to **Introduction to Spatial Analytics** -course that provides the theories, tools, and methods that
+Welcome to the **Introduction to Spatial Analytics** online course that provides the theories, tools, and methods that
 a modern spatial data scientist and an engineer needs to meet the challenges of contemporary data science applied to
 geographic problems and data.
 
