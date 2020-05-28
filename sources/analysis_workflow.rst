@@ -61,10 +61,9 @@ geography matters is a rather obvious thing (as Waldo Tobler famously put it aro
 but it is also good to remind us in a bit broader terms, what is it that make this field of ours special.
 The following presentation gives you a brief introduction to the topic:
 
-
 .. raw:: html
 
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS2xp3ydyopyxZOrCV336mnYWuIkE3wz2eEbXv5vH_O8ECBw0-pIpMQfpw8aegHHfllcbIbRF0xOe4j/embed?start=false&loop=false&delayms=3000" frameborder="0" width="700" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ5Qy35sbBvs_X3NRztMC-S8sqQSUT8BuixE86CMUHyn9Ag3_cD_jyosfOb1VCDmHVOoSNtCsWGVhRn/embed?start=false&loop=false&delayms=3000" frameborder="0" width="700" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 |
 
