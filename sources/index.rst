@@ -50,6 +50,9 @@ after which they are publicly available for anyone interested:
       - Spatial network analysis
     * - 7
       - Spatial regression
+    * - 8
+      - Applying spatial analytics in the Era of Big Data
+
 
 Course online tools
 -------------------

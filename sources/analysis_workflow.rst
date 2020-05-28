@@ -12,7 +12,9 @@
          - What is the typical process workflow for doing spatial analysis?
          - Key definitions and their differences/similarities:
              - spatial analysis; GIS; geocomputation; GIScience; geographic data science; quantitative geography, ..
-         - What kind of analytical approaches are available for working with spatial data (an overview)?
+         - What are typical application areas for spatial analytics?
+         - What kind of contemporary spatial data science challenges exist?
+
 
 .. admonition:: Resources
 
@@ -129,6 +131,21 @@ Application areas for spatial analysis
     No contents here (this is just a demo). This part would introduce the students what kind of application areas
     and spatial analysis methods there exists.
 
+
+Contemporary challenges in spatial data science
+-----------------------------------------------
+
+.. warning::
+
+    No contents here (this is just a demo). This part would introduce the students what kind of contemporary challenges exist
+    for spatial data science, such as:
+
+        - how to handle ever growing and massive spatial datasets (big geodata)
+        - how to handle sensitive spatial data in such a manner that it does not violate privacy (e.g. movement data, geosocial data etc.)
+        - how to utilize modern machine learning frameworks (such as neural nets) with spatial data to make e.g. more accurate models and predictions
+        - + classical issues:
+            - how to deal with uncertainty in spatial data
+            - how to democratize spatial analysis (e.g. with online spatial analysis platforms)
 
 References
 ----------
