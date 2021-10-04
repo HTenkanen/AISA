@@ -4,12 +4,12 @@ channels:
   - conda-forge
 
 dependencies:
-  - geopandas=0.7.0
-  - matplotlib=3.2.1
-  - folium=0.11.0
-  - networkx=2.4
-  - geopy=1.22.0
-  - osmnx=0.12.1
-  - pysal=2.2.0
+  - geopandas
+  - matplotlib
+  - folium
+  - networkx
+  - geopy
+  - osmnx
+  - pysal
 
 
