@@ -28,10 +28,13 @@ author = 'Henrikki Tenkanen'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.githubpages',
-    'jupyter_sphinx.execute',
-    'sphinxcontrib.bibtex',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.todo',
     'sphinx_togglebutton',
+    'IPython.sphinxext.ipython_console_highlighting',
+    'IPython.sphinxext.ipython_directive',
+    'myst_nb',
+    'jupyter_sphinx',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -48,7 +51,7 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'pydata_sphinx_theme'
+html_theme = 'sphinx_book_theme'
 
 # html_theme_options = {
 #     "external_links": [],
@@ -62,18 +65,6 @@ html_theme = 'pydata_sphinx_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# -- Options for nbsphinx --
-nbsphinx_allow_errors = True
-
-
-# -- Options for Jupyter-Sphinx --
-# jupyter_sphinx_thebelab_config = {
-#     'requestKernel': True,
-#     'binderOptions': {
-#         'repo': "binder-examples/requirements",
-#     },
-# }
-
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -86,4 +77,31 @@ html_css_files = [
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 html_logo = "_static/Intro-spatial-analytics.png"
+
+html_theme_options = {
+    # "external_links": [],
+    "repository_url": "https://github.com/htenkanen/AISA/",
+    "repository_branch": "master",
+    "path_to_docs": "sources/",
+    "google_analytics_id": "",
+    "use_edit_page_button": True,
+    "use_repository_button": True,
+    "launch_buttons": {
+        "binderhub_url": "https://mybinder.org",
+        "thebe": False,
+        "notebook_interface": "jupyterlab",
+        "collapse_navigation": False,
+        # Google Colab does not provide an easy way for specifying/building/activating the conda environment
+        # in a similar manner as Binder. Hence, let's not keep it. The easiest way seems to be:
+        # https://github.com/jaimergp/condacolab
+        # But it requires actions from the user nontheless, so atm it's a no-go.
+        #"colab_url": "https://colab.research.google.com"
+    },
+}
+
+# Allow errors
+execution_allow_errors = True
+
+# Do not execute cells
+jupyter_execute_notebooks = "off"
 
