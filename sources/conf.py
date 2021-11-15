@@ -69,13 +69,12 @@ html_static_path = ['_static']
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
-html_css_files = [
-    'css/custom.css',
-]
+# html_css_files = ['css/custom.css', ]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 html_logo = "_static/Intro-spatial-analytics.png"
+html_title = ""
 
 html_theme_options = {
     # "external_links": [],
