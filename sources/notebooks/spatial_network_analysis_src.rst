@@ -82,9 +82,9 @@ Before we dive deeper to spatial networks, **let's spend a moment with the follo
 
             Show me the best route from A to B:
 
-                - Car navigation
-                - Journey planning (public transport)
-                - Emergency way-finding etc.
+            - Car navigation
+            - Journey planning (public transport)
+            - Emergency way-finding etc.
 
             .. figure:: img/navigator.gif
 
@@ -93,9 +93,9 @@ Before we dive deeper to spatial networks, **let's spend a moment with the follo
 
         .. admonition:: 2. Spatial planning
 
-              - Where should we locate a new service?
-              - Where traffic congestion is most likely going to worsen in the future? (simulations)
-              - How many people can reach this location within X minutes?
+            - Where should we locate a new service?
+            - Where traffic congestion is most likely going to worsen in the future? (simulations)
+            - How many people can reach this location within X minutes?
 
             .. figure:: img/travel_time_isochrones.gif
 
@@ -103,9 +103,9 @@ Before we dive deeper to spatial networks, **let's spend a moment with the follo
 
         .. admonition:: 3. Spatial economics
 
-                - Forecasting economic developments in the area
-                - How many more customers/revenue this shop is going to get when the new metro-line opens?
-                - Spatial interaction models (e.g. gravity models such as Huff's)
+            - Forecasting economic developments in the area
+            - How many more customers/revenue this shop is going to get when the new metro-line opens?
+            - Spatial interaction models (e.g. gravity models such as Huff's)
 
             .. figure:: img/Huffs_model.jpg
 
