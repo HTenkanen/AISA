@@ -76,40 +76,40 @@ Before we dive deeper to spatial networks, **let's spend a moment with the follo
 
    Can you think of any practical examples where spatial network analysis algorithms are used in daily operations of the society?
 
-    .. container:: toggle
+   .. container:: toggle
 
-        .. admonition:: 1. Navigation
+       .. admonition:: 1. Navigation
 
-            Show me the best route from A to B:
+           Show me the best route from A to B:
 
-            - Car navigation
-            - Journey planning (public transport)
-            - Emergency way-finding etc.
+           - Car navigation
+           - Journey planning (public transport)
+           - Emergency way-finding etc.
 
-            .. figure:: img/navigator.gif
+           .. figure:: img/navigator.gif
 
-                *Source: Sygic Ltd* (`2020 <https://www.sygic.com/blog/2017/introducing-new-gps-navigation-feature-real-view-navigation>`__)
+               *Source: Sygic Ltd* (`2020 <https://www.sygic.com/blog/2017/introducing-new-gps-navigation-feature-real-view-navigation>`__)
 
 
-        .. admonition:: 2. Spatial planning
+       .. admonition:: 2. Spatial planning
 
-            - Where should we locate a new service?
-            - Where traffic congestion is most likely going to worsen in the future? (simulations)
-            - How many people can reach this location within X minutes?
+           - Where should we locate a new service?
+           - Where traffic congestion is most likely going to worsen in the future? (simulations)
+           - How many people can reach this location within X minutes?
 
-            .. figure:: img/travel_time_isochrones.gif
+           .. figure:: img/travel_time_isochrones.gif
 
-                *How fast do you reach different parts of the city by different travel modes? (pink: private car, yellow: bicycle, green: public transport) Source: Topi Tjukanov* (`2018 <https://tjukanov.org/accessibility-fireworks>`__)
+               *How fast do you reach different parts of the city by different travel modes? (pink: private car, yellow: bicycle, green: public transport) Source: Topi Tjukanov* (`2018 <https://tjukanov.org/accessibility-fireworks>`__)
 
-        .. admonition:: 3. Spatial economics
+       .. admonition:: 3. Spatial economics
 
-            - Forecasting economic developments in the area
-            - How many more customers/revenue this shop is going to get when the new metro-line opens?
-            - Spatial interaction models (e.g. gravity models such as Huff's)
+           - Forecasting economic developments in the area
+           - How many more customers/revenue this shop is going to get when the new metro-line opens?
+           - Spatial interaction models (e.g. gravity models such as Huff's)
 
-            .. figure:: img/Huffs_model.jpg
+           .. figure:: img/Huffs_model.jpg
 
-                 *Source Ela Dramowicz* (`2015 <https://www.directionsmag.com/article/3207>`__)
+                *Source Ela Dramowicz* (`2015 <https://www.directionsmag.com/article/3207>`__)
 
 
 Tutorial
