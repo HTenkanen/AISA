@@ -12,11 +12,11 @@ Learning goals
 
 After finishing this course, you should:
 
- - understand the theories and foundations for various spatial methods that are at the core of spatial data science
- - understand the unique characteristics and challenges of doing analysis with spatial data
- - have the technical skills to apply spatial analytics to real-world problems using Python programming with open source libraries (no proprietary libraries are used)
- - know how to conduct reproducible science using modern technologies (e.g. using GitHub and Jupyter Notebooks)
- - know how to do collaborative coding with class mates (using version control + GitHub)
+- understand the theories and foundations for various spatial methods that are at the core of spatial data science
+- understand the unique characteristics and challenges of doing analysis with spatial data
+- have the technical skills to apply spatial analytics to real-world problems using Python programming with open source libraries (no proprietary libraries are used)
+- know how to conduct reproducible science using modern technologies (e.g. using GitHub and Jupyter Notebooks)
+- know how to do collaborative coding with class mates (using version control + GitHub)
 
 Prerequisites
 -------------

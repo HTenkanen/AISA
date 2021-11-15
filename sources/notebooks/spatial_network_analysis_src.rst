@@ -38,13 +38,11 @@ spatial networks and conduct useful queries such as finding the shortest path al
 .. admonition:: Learning goals
    :name: hint
 
-   .. container:: toggle
+   After this tutorial, you should be able to:
 
-        After this tutorial, you should be able to:
-
-         - Understand typical application areas for spatial network analysis
-         - Know the basic concepts and elements of a graph (network)
-         - Be able to solve simple spatial network analysis problems using Python programming language
+   - Understand typical application areas for spatial network analysis
+   - Know the basic concepts and elements of a graph (network)
+   - Be able to solve simple spatial network analysis problems using Python programming language
 
 .. admonition:: Additional materials
    :name: hint
@@ -53,7 +51,7 @@ spatial networks and conduct useful queries such as finding the shortest path al
 
         **Literature**
 
-         - De Smith, Goodchild, Longley et al. (2020). Geospatial Analysis - `Chapter 7: Network and Location Analysis <https://www.spatialanalysisonline.com/HTML/index.html?network_and_location_analysis.htm>`__
+        - De Smith, Goodchild, Longley et al. (2020). Geospatial Analysis - `Chapter 7: Network and Location Analysis <https://www.spatialanalysisonline.com/HTML/index.html?network_and_location_analysis.htm>`__
 
         **Videos**
 
