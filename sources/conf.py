@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Introduction to Spatial Analytics'
-copyright = '2020, Henrikki Tenkanen. Demonstration material for Aalto University'
+copyright = '2021, Henrikki Tenkanen. Demo site for teaching demonstrations.'
 author = 'Henrikki Tenkanen'
 
 

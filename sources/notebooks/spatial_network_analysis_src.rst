@@ -6,6 +6,13 @@
 
 |
 
+.. admonition:: Task 1: Warmup poll! What kind of networks surround us?
+
+    Name a network of any kind that comes to your mind, which is somehow relevant for your own life?
+    `Add your suggestion here <https://presemo.aalto.fi/sds>`__ (click the link).
+
+|
+
 Introduction
 ------------
 
@@ -66,7 +73,7 @@ spatial networks and conduct useful queries such as finding the shortest path al
 
 Before we dive deeper to spatial networks, **let's spend a moment with the following task**:
 
-.. admonition:: Task 1: Post your ideas to the chat!
+.. admonition:: Task 2: Post your ideas to the chat!
    :name: important
 
    Can you think of any practical examples where spatial network analysis algorithms are used in daily operations of the society?
@@ -210,7 +217,7 @@ edge_id from_node to_node description
 2       C         A       *edge for direction 2*
 ======= ========= ======= ======================
 
-.. admonition:: TASK 2 - Vote!
+.. admonition:: TASK 3 - Vote!
    :name: note
 
    The following routes are examples of paths with costs along the network. Which one is faster? Choose A or B.
